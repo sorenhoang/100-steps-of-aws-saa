@@ -1,8 +1,8 @@
 # 100 Steps of AWS for SAA-C03
 
-> Tăng tốc học AWS SAA-C03 từng bước nhỏ.
+> Accelerate your AWS SAA-C03 learning through small, manageable steps.
 
-## 📘 Mục lục
+## 📘 Table of Contents
 
 - [Step 01](./step-01) - IAM – Users, Groups, Policies
 - [Step 02](./step-02) - IAM – Roles vs Users vs Federated Access
