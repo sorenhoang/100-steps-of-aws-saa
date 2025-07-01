@@ -1,6 +1,6 @@
 # 100 Steps of AWS for SAA-C03
 
-> Accelerate your AWS SAA-C03 learning step by step.
+> Accelerate your AWS SAA-C03 learning through small, manageable steps.
 
 ## 📘 Table of Contents
 
