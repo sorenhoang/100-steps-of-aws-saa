@@ -1,4 +1,16 @@
-# Step 40: Route 53 Routing Policies & DNS TTL
+# ## 🎯 Objective
+- [ ] Master: **Route 53 Routing Policies & DNS TTL**
+
+## 📘 Notes
+> Knowledge summary, documentation links, videos...
+
+## 🧪 Practice
+- [ ] Lab/demo description (if any)
+
+## ✅ Checklist
+- [ ] Read official documentation
+- [ ] Watch tutorial videos
+- [ ] Complete quiz/flashcardse 53 Routing Policies & DNS TTL
 
 ## 🎯 Mục tiêu
 - [ ] Nắm vững: **Route 53 Routing Policies & DNS TTL**

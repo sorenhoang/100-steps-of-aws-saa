@@ -1,15 +1,15 @@
 # Step 64: Cost Explorer & AWS Budgets
 
-## 🎯 Mục tiêu
-- [ ] Nắm vững: **Cost Explorer & AWS Budgets**
+## 🎯 Objective
+- [ ] Master: **Cost Explorer & AWS Budgets**
 
-## 📘 Ghi chú
-> Tóm tắt kiến thức, link tài liệu, video...
+## 📘 Notes
+> Knowledge summary, documentation links, videos...
 
-## 🧪 Thực hành
-- [ ] Mô tả lab / demo (nếu có)
+## 🧪 Practice
+- [ ] Lab/demo description (if any)
 
 ## ✅ Checklist
-- [ ] Đọc tài liệu chính thức
-- [ ] Xem video hướng dẫn
-- [ ] Làm quiz / flashcard
+- [ ] Read official documentation
+- [ ] Watch tutorial videos
+- [ ] Complete quiz/flashcards
