@@ -62,9 +62,9 @@ When a principal makes a request, AWS evaluates policies in a specific order. Th
 <details>
 <summary>View Answer</summary>
 
-Answer: C
+**Answer:** C
 
-Explanation: An SCP is the perfect tool for this. It acts as a centralized guardrail for an entire OU. By denying cloudtrail:StopLogging at the OU level, no principal (including the root user) in any account within that OU can perform the action, regardless of their individual IAM permissions. This is more scalable and foolproof than managing permissions boundaries (A) or identity policies (B) for every principal. Option D is a reactive measure, not a preventative one.
+**Explanation:** An SCP is the perfect tool for this. It acts as a centralized guardrail for an entire OU. By denying cloudtrail:StopLogging at the OU level, no principal (including the root user) in any account within that OU can perform the action, regardless of their individual IAM permissions. This is more scalable and foolproof than managing permissions boundaries (A) or identity policies (B) for every principal. Option D is a reactive measure, not a preventative one.
 
 </details>
     
@@ -80,9 +80,9 @@ Explanation: An SCP is the perfect tool for this. It acts as a centralized guard
 <details>
 <summary>View Answer</summary>
 
-Answer: C
+**Answer:** C
 
-Explanation: This is the primary use case for permissions boundaries: safe delegation. By attaching a permissions boundary, you allow the developers to create roles (iam:CreateRole), but you limit the maximum permissions those new roles can have. Any role they create cannot have permissions outside of what is defined in the boundary (ec2:* and s3:*). This prevents privilege escalation. Option B is incorrect because an SCP would restrict the developers themselves, not the roles they create.
+**Explanation:** This is the primary use case for permissions boundaries: safe delegation. By attaching a permissions boundary, you allow the developers to create roles (iam:CreateRole), but you limit the maximum permissions those new roles can have. Any role they create cannot have permissions outside of what is defined in the boundary (ec2:* and s3:*). This prevents privilege escalation. Option B is incorrect because an SCP would restrict the developers themselves, not the roles they create.
 
 </details>
     
@@ -98,9 +98,9 @@ Explanation: This is the primary use case for permissions boundaries: safe deleg
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: The effective permissions are the intersection of the identity-based policy and the permissions boundary. The identity policy allows everything (s3:*), but the boundary only allows s3:GetObject. The intersection of "everything" and "s3:GetObject" is just "s3:GetObject".
+**Explanation:** The effective permissions are the intersection of the identity-based policy and the permissions boundary. The identity policy allows everything (s3:*), but the boundary only allows s3:GetObject. The intersection of "everything" and "s3:GetObject" is just "s3:GetObject".
 
 </details>
     
@@ -116,9 +116,9 @@ Explanation: The effective permissions are the intersection of the identity-base
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: Using an SCP applied to the organization's root is the most effective and encompassing solution. It creates a hard guardrail that is automatically inherited by all accounts. This prevents resources from being created in unapproved regions in the first place. Managing permissions boundaries (A) is not scalable. AWS Config (C) is reactive; it detects non-compliance after it happens, whereas an SCP prevents it.
+**Explanation:** Using an SCP applied to the organization's root is the most effective and encompassing solution. It creates a hard guardrail that is automatically inherited by all accounts. This prevents resources from being created in unapproved regions in the first place. Managing permissions boundaries (A) is not scalable. AWS Config (C) is reactive; it detects non-compliance after it happens, whereas an SCP prevents it.
 
 </details>
     
@@ -134,9 +134,9 @@ Explanation: Using an SCP applied to the organization's root is the most effecti
 <details>
 <summary>View Answer</summary>
 
-Answer: D
+**Answer:** D
 
-Explanation: An explicit Deny in any policy, especially a high-level one like an SCP, always takes precedence. SCPs never grant permissions (A is false), they do affect the root user of member accounts (B is false), and the default SCP is FullAWSAccess, which allows all actions (C is false).
+**Explanation:** An explicit Deny in any policy, especially a high-level one like an SCP, always takes precedence. SCPs never grant permissions (A is false), they do affect the root user of member accounts (B is false), and the default SCP is FullAWSAccess, which allows all actions (C is false).
 
 </details>
     
@@ -152,9 +152,9 @@ Explanation: An explicit Deny in any policy, especially a high-level one like an
 <details>
 <summary>View Answer</summary>
 
-Answer: D
+**Answer:** D
 
-Explanation: The effective permission is the intersection. The set of actions in the identity policy is {GetItem} and the set of actions in the boundary is {PutItem}. Since there are no common actions between the two policies, the user can perform neither. For an action to be allowed, it must be permitted by BOTH policies.
+**Explanation:** The effective permission is the intersection. The set of actions in the identity policy is {GetItem} and the set of actions in the boundary is {PutItem}. Since there are no common actions between the two policies, the user can perform neither. For an action to be allowed, it must be permitted by BOTH policies.
 
 </details>
     
@@ -170,9 +170,9 @@ Explanation: The effective permission is the intersection. The set of actions in
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: This is another classic delegation scenario perfectly suited for a permissions boundary. The boundary acts as a "guardrail" on the iam:CreateRole and iam:AttachPolicy permissions, ensuring the team lead can only create roles/policies within the limits set by the architect, thus preventing privilege escalation. SCPs (C and D) apply to the entire account/OU, which is too broad for delegating permissions to a single user.
+**Explanation:** This is another classic delegation scenario perfectly suited for a permissions boundary. The boundary acts as a "guardrail" on the iam:CreateRole and iam:AttachPolicy permissions, ensuring the team lead can only create roles/policies within the limits set by the architect, thus preventing privilege escalation. SCPs (C and D) apply to the entire account/OU, which is too broad for delegating permissions to a single user.
 
 </details>
     
@@ -188,9 +188,9 @@ Explanation: This is another classic delegation scenario perfectly suited for a 
 <details>
 <summary>View Answer</summary>
 
-Answer: C
+**Answer:** C
 
-Explanation: A permissions boundary acts as a ceiling. It defines the "maximum" scope of a principal's permissions. The actual permissions are then granted by identity-based policies, but they can never exceed what the boundary allows. Option A describes SCPs.
+**Explanation:** A permissions boundary acts as a ceiling. It defines the "maximum" scope of a principal's permissions. The actual permissions are then granted by identity-based policies, but they can never exceed what the boundary allows. Option A describes SCPs.
 
 </details>
     
@@ -206,9 +206,9 @@ Explanation: A permissions boundary acts as a ceiling. It defines the "maximum" 
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: A key feature and a major reason to use SCPs is that they do apply to the root user of member accounts. This allows an organization to enforce critical guardrails that even the highest-privileged user in a member account cannot bypass.
+**Explanation:** A key feature and a major reason to use SCPs is that they do apply to the root user of member accounts. This allows an organization to enforce critical guardrails that even the highest-privileged user in a member account cannot bypass.
 
 </details>
     
@@ -224,9 +224,9 @@ Explanation: A key feature and a major reason to use SCPs is that they do apply 
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: The evaluation logic checks SCPs first. If the action is explicitly allowed at the user/role level (by the IAM policy and permissions boundary) and the resource level, the only remaining place for a denial in this context is a higher-level SCP.
+**Explanation:** The evaluation logic checks SCPs first. If the action is explicitly allowed at the user/role level (by the IAM policy and permissions boundary) and the resource level, the only remaining place for a denial in this context is a higher-level SCP.
 
 </details>
     
@@ -245,7 +245,7 @@ Explanation: The evaluation logic checks SCPs first. If the action is explicitly
 
 Answers: C and D
 
-Explanation: SCPs are for broad, preventative guardrails. You can deny the s3:PutBucket action if the encryption header is not present (C). You can also deny the organizations:LeaveOrganization action to prevent member accounts from detaching themselves (D). SCPs cannot grant permissions (A), and while they restrict users, they apply to whole accounts/OUs, not individuals (B). Defining max permissions for a single role is the job of a permissions boundary (E).
+**Explanation:** SCPs are for broad, preventative guardrails. You can deny the s3:PutBucket action if the encryption header is not present (C). You can also deny the organizations:LeaveOrganization action to prevent member accounts from detaching themselves (D). SCPs cannot grant permissions (A), and while they restrict users, they apply to whole accounts/OUs, not individuals (B). Defining max permissions for a single role is the job of a permissions boundary (E).
 
 </details>
     
@@ -261,9 +261,9 @@ Explanation: SCPs are for broad, preventative guardrails. You can deny the s3:Pu
 <details>
 <summary>View Answer</summary>
 
-Answer: C
+**Answer:** C
 
-Explanation: This is the core concept of permissions boundaries. An action must be allowed by BOTH the identity policy and the boundary to be permitted. The final set of allowed actions is the intersection (the common ground) between the two.
+**Explanation:** This is the core concept of permissions boundaries. An action must be allowed by BOTH the identity policy and the boundary to be permitted. The final set of allowed actions is the intersection (the common ground) between the two.
 
 </details>
     
@@ -279,9 +279,9 @@ Explanation: This is the core concept of permissions boundaries. An action must 
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: To enforce a rule across an entire OU, an SCP is the correct tool. By using a Deny rule with a condition key (ec2:InstanceType), you can prevent the launching of any non-approved instance types before they are even created. Option A can be bypassed if users can create new policies. Option D is reactive.
+**Explanation:** To enforce a rule across an entire OU, an SCP is the correct tool. By using a Deny rule with a condition key (ec2:InstanceType), you can prevent the launching of any non-approved instance types before they are even created. Option A can be bypassed if users can create new policies. Option D is reactive.
 
 </details>
     
@@ -297,9 +297,9 @@ Explanation: To enforce a rule across an entire OU, an SCP is the correct tool. 
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: When troubleshooting permissions, you must think about the entire evaluation chain. If the user's identity-based policies (user and group policies) and permissions boundary (which is absent here) allow an action, the next logical place to look for a restriction is the account-level guardrail: the SCP.
+**Explanation:** When troubleshooting permissions, you must think about the entire evaluation chain. If the user's identity-based policies (user and group policies) and permissions boundary (which is absent here) allow an action, the next logical place to look for a restriction is the account-level guardrail: the SCP.
 
 </details>
     
@@ -315,9 +315,9 @@ Explanation: When troubleshooting permissions, you must think about the entire e
 <details>
 <summary>View Answer</summary>
 
-Answer: C
+**Answer:** C
 
-Explanation: This is a fundamental distinction. SCPs are a component of AWS Organizations and are used for multi-account governance. Permissions boundaries are a feature within the IAM service itself and are applied to individual IAM principals (users and roles). Both cannot grant permissions (A is false). Their application targets are swapped in option B. SCPs affect the root user, while boundaries do not (D is false).
+**Explanation:** This is a fundamental distinction. SCPs are a component of AWS Organizations and are used for multi-account governance. Permissions boundaries are a feature within the IAM service itself and are applied to individual IAM principals (users and roles). Both cannot grant permissions (A is false). Their application targets are swapped in option B. SCPs affect the root user, while boundaries do not (D is false).
 
 </details>
     
@@ -333,9 +333,9 @@ Explanation: This is a fundamental distinction. SCPs are a component of AWS Orga
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: The effective permissions are the intersection of the two policies. The identity policy allows all S3 and EC2 actions. The boundary allows only s3:GetObject and ec2:DescribeInstances. The common ground (intersection) between these two sets is just s3:GetObject and ec2:DescribeInstances.
+**Explanation:** The effective permissions are the intersection of the two policies. The identity policy allows all S3 and EC2 actions. The boundary allows only s3:GetObject and ec2:DescribeInstances. The common ground (intersection) between these two sets is just s3:GetObject and ec2:DescribeInstances.
 
 </details>
     
@@ -351,9 +351,9 @@ Explanation: The effective permissions are the intersection of the two policies.
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: To enforce a policy across an entire organization, an SCP is the most powerful and appropriate tool. Applying it at the root ensures all OUs and accounts inherit the policy, effectively preventing the iam:CreateAccessKey action everywhere. Options A and D are not scalable and can be bypassed. Option C is reactive and not preventative.
+**Explanation:** To enforce a policy across an entire organization, an SCP is the most powerful and appropriate tool. Applying it at the root ensures all OUs and accounts inherit the policy, effectively preventing the iam:CreateAccessKey action everywhere. Options A and D are not scalable and can be bypassed. Option C is reactive and not preventative.
 
 </details>
     
@@ -372,7 +372,7 @@ Explanation: To enforce a policy across an entire organization, an SCP is the mo
 
 Answers: B and D
 
-Explanation: A permissions boundary is a feature designed to set limits on a specific IAM principal. The two types of IAM principals are Users and Roles. You cannot attach a boundary to a group, OU, or another policy.
+**Explanation:** A permissions boundary is a feature designed to set limits on a specific IAM principal. The two types of IAM principals are Users and Roles. You cannot attach a boundary to a group, OU, or another policy.
 
 </details>
     
@@ -388,9 +388,9 @@ Explanation: A permissions boundary is a feature designed to set limits on a spe
 <details>
 <summary>View Answer</summary>
 
-Answer: B
+**Answer:** B
 
-Explanation: This is a perfect use case for a permissions boundary. You can grant the junior admin permissions like iam:CreateUser, iam:PutUserPolicy, and iam:AddUserToGroup. Then, you attach a permissions boundary that denies the iam:AddUserToGroup action when the resource (the group) is the "Administrators" group. This allows them to perform their duties while preventing them from escalating privileges.
+**Explanation:** This is a perfect use case for a permissions boundary. You can grant the junior admin permissions like iam:CreateUser, iam:PutUserPolicy, and iam:AddUserToGroup. Then, you attach a permissions boundary that denies the iam:AddUserToGroup action when the resource (the group) is the "Administrators" group. This allows them to perform their duties while preventing them from escalating privileges.
 
 </details>
     
@@ -406,9 +406,9 @@ Explanation: This is a perfect use case for a permissions boundary. You can gran
 <details>
 <summary>View Answer</summary>
 
-Answer: D
+**Answer:** D
 
-Explanation: For any action to be allowed, it must pass through all checks.
+**Explanation:** For any action to be allowed, it must pass through all checks.
 
 - For `ec2:DescribeInstances`: The SCP allows it, the IAM policy allows it, but the permissions boundary does *not* allow it. So, it's denied.
 - For `s3:ListBucket`: The SCP allows it, the permissions boundary allows it, but the IAM policy does not allow it. So, it's denied.
