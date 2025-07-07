@@ -4,103 +4,103 @@
 
 ## 📘 Table of Contents
 
-- [Step 01](./step-01) - IAM – Users, Groups, Policies
-- [Step 02](./step-02) - IAM – Roles vs Users vs Federated Access
-- [Step 03](./step-03) - IAM – SCP & Permissions Boundaries
-- [Step 04](./step-04) - MFA & IAM Best Practices
-- [Step 05](./step-05) - Root Account, Billing Alerts, Trusted Advisor
-- [Step 06](./step-06) - AWS Organizations & Consolidated Billing
-- [Step 07](./step-07) - Landing Zone & Multi‑Account Governance
-- [Step 08](./step-08) - S3 Bucket Policies vs IAM Policies
-- [Step 09](./step-09) - KMS – Keys, CMKs, Encryption Workflow
-- [Step 10](./step-10) - IAM with VPC Endpoints & Policies
-- [Step 11](./step-11) - EC2 Basics – AMI & Instance Types
-- [Step 12](./step-12) - EC2 Pricing Models
-- [Step 13](./step-13) - EC2 User Data & Bootstrapping
-- [Step 14](./step-14) - Security Groups vs NACL
-- [Step 15](./step-15) - EBS vs Instance Store
-- [Step 16](./step-16) - AMI & EBS Snapshots
-- [Step 17](./step-17) - Placement Groups, ENI, EIP
-- [Step 18](./step-18) - Auto Scaling Groups
-- [Step 19](./step-19) - Load Balancers – CLB vs ALB vs NLB
-- [Step 20](./step-20) - EC2 Troubleshooting & Lab
-- [Step 21](./step-21) - S3 Storage Classes & Basics
-- [Step 22](./step-22) - S3 Versioning & Lifecycle Policies
-- [Step 23](./step-23) - S3 Encryption, Static Website Hosting
-- [Step 24](./step-24) - S3 Performance & Transfer Acceleration
-- [Step 25](./step-25) - EBS Volume Types & Performance
-- [Step 26](./step-26) - Automating EBS Snapshots
-- [Step 27](./step-27) - EFS vs FSx & Hybrid Storage
-- [Step 28](./step-28) - AWS Snow Family & Storage Gateway
-- [Step 29](./step-29) - Glacier & Archive Patterns
-- [Step 30](./step-30) - Lab: Static Website on S3 + CloudFront
-- [Step 31](./step-31) - VPC Fundamentals & CIDR Planning
-- [Step 32](./step-32) - Subnets – Public, Private, Isolated
-- [Step 33](./step-33) - Internet Gateway & NAT Gateway
-- [Step 34](./step-34) - Route Tables, NACL Rules, Security Groups
-- [Step 35](./step-35) - VPC Peering & Transit Gateway
-- [Step 36](./step-36) - VPC Endpoints – Gateway & Interface
-- [Step 37](./step-37) - VPN & Direct Connect Overview
-- [Step 38](./step-38) - VPC Flow Logs & Network Cost Optimization
-- [Step 39](./step-39) - CloudFront Basics & Edge Caching
-- [Step 40](./step-40) - Route 53 Routing Policies & DNS TTL
-- [Step 41](./step-41) - RDS Engines & Multi‑AZ Concepts
-- [Step 42](./step-42) - RDS Backups, Snapshots, Restores
-- [Step 43](./step-43) - Read Replicas & Cross‑Region DR
-- [Step 44](./step-44) - Aurora Clusters & Serverless
-- [Step 45](./step-45) - DynamoDB Basics & Tables
-- [Step 46](./step-46) - DynamoDB TTL, Streams, GSIs
-- [Step 47](./step-47) - DynamoDB DAX & Performance
-- [Step 48](./step-48) - ElastiCache – Redis vs Memcached
-- [Step 49](./step-49) - Specialty Databases – Neptune, QLDB, Timestream
-- [Step 50](./step-50) - Lab: RDS Snapshot Recovery
-- [Step 51](./step-51) - Lambda Fundamentals & Limits
-- [Step 52](./step-52) - Lambda Event Sources & Triggers
-- [Step 53](./step-53) - API Gateway – REST vs HTTP vs WebSocket
-- [Step 54](./step-54) - Step Functions & Orchestration
-- [Step 55](./step-55) - Serverless Pattern: Lambda + DynamoDB
-- [Step 56](./step-56) - SQS – Standard vs FIFO
-- [Step 57](./step-57) - SNS Topics & Fan‑out Pattern
-- [Step 58](./step-58) - EventBridge vs CloudWatch Events
-- [Step 59](./step-59) - Kinesis Streams & Firehose
-- [Step 60](./step-60) - Lab: Lambda + API Gateway CRUD
-- [Step 61](./step-61) - CloudWatch Metrics, Alarms & Dashboards
-- [Step 62](./step-62) - CloudTrail, X‑Ray Tracing
-- [Step 63](./step-63) - AWS Config, Inspector, GuardDuty
-- [Step 64](./step-64) - Cost Explorer & AWS Budgets
-- [Step 65](./step-65) - Trusted Advisor Core Checks
-- [Step 66](./step-66) - High Availability vs Fault Tolerance
-- [Step 67](./step-67) - Disaster Recovery Strategies
-- [Step 68](./step-68) - Scalability Patterns – Vertical & Horizontal
-- [Step 69](./step-69) - Backup & Restore Services
-- [Step 70](./step-70) - Designing Resilient Architectures
-- [Step 71](./step-71) - Well‑Architected Framework Overview
-- [Step 72](./step-72) - Reliability Pillar Deep Dive
-- [Step 73](./step-73) - Performance Efficiency Pillar
-- [Step 74](./step-74) - Cost Optimization Pillar
-- [Step 75](./step-75) - Operational Excellence Pillar
-- [Step 76](./step-76) - Security Pillar
-- [Step 77](./step-77) - Architecture Use‑Case: Scalable Web App
-- [Step 78](./step-78) - Architecture Use‑Case: Serverless Data Processing
-- [Step 79](./step-79) - Architecture Use‑Case: Multi‑Tier App
-- [Step 80](./step-80) - Quiz: Architecture Review
-- [Step 81](./step-81) - Practice Questions Domain 1 (Secure Architectures)
-- [Step 82](./step-82) - Practice Questions Domain 2 (Resilient Architectures)
-- [Step 83](./step-83) - Practice Questions Domain 3 (High‑Performing Architectures)
-- [Step 84](./step-84) - Practice Questions Domain 4 (Cost‑Optimized Architectures)
-- [Step 85](./step-85) - Practice Questions Mixed Set 1
-- [Step 86](./step-86) - Practice Questions Mixed Set 2
-- [Step 87](./step-87) - Practice Questions Mixed Set 3
-- [Step 88](./step-88) - Practice Questions Mixed Set 4
-- [Step 89](./step-89) - Practice Questions Mixed Set 5
-- [Step 90](./step-90) - Practice Questions Mixed Set 6
-- [Step 91](./step-91) - Exam Tips & Time Management
-- [Step 92](./step-92) - Mock Exam #1 (65 Qs)
-- [Step 93](./step-93) - Mock Exam #1 Review & Explanations
-- [Step 94](./step-94) - Mock Exam #2 (65 Qs)
-- [Step 95](./step-95) - Mock Exam #2 Review & Explanations
-- [Step 96](./step-96) - Key AWS Whitepapers Summary
-- [Step 97](./step-97) - AWS FAQs – Top 20 Services
-- [Step 98](./step-98) - Mind Maps & Cheat Sheets Consolidation
-- [Step 99](./step-99) - Final Checklist & Day‑Before Exam Plan
-- [Step 100](./step-100) - Write Reflection & Share Repo
+- [Step 01](./docs/step-01) - IAM – Users, Groups, Policies
+- [Step 02](./docs/step-02) - IAM – Roles vs Users vs Federated Access
+- [Step 03](./docs/step-03) - IAM – SCP & Permissions Boundaries
+- [Step 04](./docs/step-04) - MFA & IAM Best Practices
+- [Step 05](./docs/step-05) - Root Account, Billing Alerts, Trusted Advisor
+- [Step 06](./docs/step-06) - AWS Organizations & Consolidated Billing
+- [Step 07](./docs/step-07) - Landing Zone & Multi‑Account Governance
+- [Step 08](./docs/step-08) - S3 Bucket Policies vs IAM Policies
+- [Step 09](./docs/step-09) - KMS – Keys, CMKs, Encryption Workflow
+- [Step 10](./docs/step-10) - IAM with VPC Endpoints & Policies
+- [Step 11](./docs/step-11) - EC2 Basics – AMI & Instance Types
+- [Step 12](./docs/step-12) - EC2 Pricing Models
+- [Step 13](./docs/step-13) - EC2 User Data & Bootstrapping
+- [Step 14](./docs/step-14) - Security Groups vs NACL
+- [Step 15](./docs/step-15) - EBS vs Instance Store
+- [Step 16](./docs/step-16) - AMI & EBS Snapshots
+- [Step 17](./docs/step-17) - Placement Groups, ENI, EIP
+- [Step 18](./docs/step-18) - Auto Scaling Groups
+- [Step 19](./docs/step-19) - Load Balancers – CLB vs ALB vs NLB
+- [Step 20](./docs/step-20) - EC2 Troubleshooting & Lab
+- [Step 21](./docs/step-21) - S3 Storage Classes & Basics
+- [Step 22](./docs/step-22) - S3 Versioning & Lifecycle Policies
+- [Step 23](./docs/step-23) - S3 Encryption, Static Website Hosting
+- [Step 24](./docs/step-24) - S3 Performance & Transfer Acceleration
+- [Step 25](./docs/step-25) - EBS Volume Types & Performance
+- [Step 26](./docs/step-26) - Automating EBS Snapshots
+- [Step 27](./docs/step-27) - EFS vs FSx & Hybrid Storage
+- [Step 28](./docs/step-28) - AWS Snow Family & Storage Gateway
+- [Step 29](./docs/step-29) - Glacier & Archive Patterns
+- [Step 30](./docs/step-30) - Lab: Static Website on S3 + CloudFront
+- [Step 31](./docs/step-31) - VPC Fundamentals & CIDR Planning
+- [Step 32](./docs/step-32) - Subnets – Public, Private, Isolated
+- [Step 33](./docs/step-33) - Internet Gateway & NAT Gateway
+- [Step 34](./docs/step-34) - Route Tables, NACL Rules, Security Groups
+- [Step 35](./docs/step-35) - VPC Peering & Transit Gateway
+- [Step 36](./docs/step-36) - VPC Endpoints – Gateway & Interface
+- [Step 37](./docs/step-37) - VPN & Direct Connect Overview
+- [Step 38](./docs/step-38) - VPC Flow Logs & Network Cost Optimization
+- [Step 39](./docs/step-39) - CloudFront Basics & Edge Caching
+- [Step 40](./docs/step-40) - Route 53 Routing Policies & DNS TTL
+- [Step 41](./docs/step-41) - RDS Engines & Multi‑AZ Concepts
+- [Step 42](./docs/step-42) - RDS Backups, Snapshots, Restores
+- [Step 43](./docs/step-43) - Read Replicas & Cross‑Region DR
+- [Step 44](./docs/step-44) - Aurora Clusters & Serverless
+- [Step 45](./docs/step-45) - DynamoDB Basics & Tables
+- [Step 46](./docs/step-46) - DynamoDB TTL, Streams, GSIs
+- [Step 47](./docs/step-47) - DynamoDB DAX & Performance
+- [Step 48](./docs/step-48) - ElastiCache – Redis vs Memcached
+- [Step 49](./docs/step-49) - Specialty Databases – Neptune, QLDB, Timestream
+- [Step 50](./docs/step-50) - Lab: RDS Snapshot Recovery
+- [Step 51](./docs/step-51) - Lambda Fundamentals & Limits
+- [Step 52](./docs/step-52) - Lambda Event Sources & Triggers
+- [Step 53](./docs/step-53) - API Gateway – REST vs HTTP vs WebSocket
+- [Step 54](./docs/step-54) - Step Functions & Orchestration
+- [Step 55](./docs/step-55) - Serverless Pattern: Lambda + DynamoDB
+- [Step 56](./docs/step-56) - SQS – Standard vs FIFO
+- [Step 57](./docs/step-57) - SNS Topics & Fan‑out Pattern
+- [Step 58](./docs/step-58) - EventBridge vs CloudWatch Events
+- [Step 59](./docs/step-59) - Kinesis Streams & Firehose
+- [Step 60](./docs/step-60) - Lab: Lambda + API Gateway CRUD
+- [Step 61](./docs/step-61) - CloudWatch Metrics, Alarms & Dashboards
+- [Step 62](./docs/step-62) - CloudTrail, X‑Ray Tracing
+- [Step 63](./docs/step-63) - AWS Config, Inspector, GuardDuty
+- [Step 64](./docs/step-64) - Cost Explorer & AWS Budgets
+- [Step 65](./docs/step-65) - Trusted Advisor Core Checks
+- [Step 66](./docs/step-66) - High Availability vs Fault Tolerance
+- [Step 67](./docs/step-67) - Disaster Recovery Strategies
+- [Step 68](./docs/step-68) - Scalability Patterns – Vertical & Horizontal
+- [Step 69](./docs/step-69) - Backup & Restore Services
+- [Step 70](./docs/step-70) - Designing Resilient Architectures
+- [Step 71](./docs/step-71) - Well‑Architected Framework Overview
+- [Step 72](./docs/step-72) - Reliability Pillar Deep Dive
+- [Step 73](./docs/step-73) - Performance Efficiency Pillar
+- [Step 74](./docs/step-74) - Cost Optimization Pillar
+- [Step 75](./docs/step-75) - Operational Excellence Pillar
+- [Step 76](./docs/step-76) - Security Pillar
+- [Step 77](./docs/step-77) - Architecture Use‑Case: Scalable Web App
+- [Step 78](./docs/step-78) - Architecture Use‑Case: Serverless Data Processing
+- [Step 79](./docs/step-79) - Architecture Use‑Case: Multi‑Tier App
+- [Step 80](./docs/step-80) - Quiz: Architecture Review
+- [Step 81](./docs/step-81) - Practice Questions Domain 1 (Secure Architectures)
+- [Step 82](./docs/step-82) - Practice Questions Domain 2 (Resilient Architectures)
+- [Step 83](./docs/step-83) - Practice Questions Domain 3 (High‑Performing Architectures)
+- [Step 84](./docs/step-84) - Practice Questions Domain 4 (Cost‑Optimized Architectures)
+- [Step 85](./docs/step-85) - Practice Questions Mixed Set 1
+- [Step 86](./docs/step-86) - Practice Questions Mixed Set 2
+- [Step 87](./docs/step-87) - Practice Questions Mixed Set 3
+- [Step 88](./docs/step-88) - Practice Questions Mixed Set 4
+- [Step 89](./docs/step-89) - Practice Questions Mixed Set 5
+- [Step 90](./docs/step-90) - Practice Questions Mixed Set 6
+- [Step 91](./docs/step-91) - Exam Tips & Time Management
+- [Step 92](./docs/step-92) - Mock Exam #1 (65 Qs)
+- [Step 93](./docs/step-93) - Mock Exam #1 Review & Explanations
+- [Step 94](./docs/step-94) - Mock Exam #2 (65 Qs)
+- [Step 95](./docs/step-95) - Mock Exam #2 Review & Explanations
+- [Step 96](./docs/step-96) - Key AWS Whitepapers Summary
+- [Step 97](./docs/step-97) - AWS FAQs – Top 20 Services
+- [Step 98](./docs/step-98) - Mind Maps & Cheat Sheets Consolidation
+- [Step 99](./docs/step-99) - Final Checklist & Day‑Before Exam Plan
+- [Step 100](./docs/step-100) - Write Reflection & Share Repo
