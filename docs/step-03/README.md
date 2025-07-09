@@ -1,7 +1,7 @@
 # Step 03: IAM – SCP & Permissions Boundaries
 
 ## 🎯 Objective
-- [ ] Master: **IAM – SCP & Permissions Boundaries**
+- [x] Master: **IAM – SCP & Permissions Boundaries**
 
 ## 📘 Notes
 ### **Deep Dive: IAM – Service Control Policies (SCPs) & Permissions Boundaries**

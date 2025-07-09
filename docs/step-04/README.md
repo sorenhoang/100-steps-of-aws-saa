@@ -1,7 +1,7 @@
 # Step 04: MFA & IAM Best Practices
 
 ## 🎯 Objective
-- [ ] Master: **MFA & IAM Best Practices**
+- [x] Master: **MFA & IAM Best Practices**
 
 ## 📘 Notes
 

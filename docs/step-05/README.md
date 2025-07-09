@@ -1,7 +1,7 @@
 # Step 05: Root Account, Billing Alerts, Trusted Advisor
 
 ## 🎯 Objective
-- [ ] Master: **Root Account, Billing Alerts, Trusted Advisor**
+- [x] Master: **Root Account, Billing Alerts, Trusted Advisor**
 
 ## 📘 Notes
 > Knowledge summary, documentation links, videos...

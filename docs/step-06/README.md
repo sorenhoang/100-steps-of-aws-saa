@@ -2,7 +2,7 @@
 
 ## 🎯 Objective
 
-- [ ] Master: **AWS Organizations & Consolidated Billing**
+- [x] Master: **AWS Organizations & Consolidated Billing**
 
 ## 📘 Notes
 
