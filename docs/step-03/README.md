@@ -4,6 +4,7 @@
 - [x] Master: **IAM – SCP & Permissions Boundaries**
 
 ## 📘 Notes
+
 ### **Deep Dive: IAM – Service Control Policies (SCPs) & Permissions Boundaries**
 
 In the realm of AWS Identity and Access Management (IAM), both Service Control Policies (SCPs) and Permissions Boundaries are crucial for establishing robust security guardrails. While they both restrict permissions, they operate at different levels and serve distinct purposes. Understanding their interplay is a key competency for a Solutions Architect.

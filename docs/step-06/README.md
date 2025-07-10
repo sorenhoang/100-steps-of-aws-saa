@@ -6,8 +6,6 @@
 
 ## 📘 Notes
 
-> Knowledge summary, documentation links, videos...
-
 ## 🧪 Practice
 
 ### **Deep Dive: AWS Organizations & Consolidated Billing**

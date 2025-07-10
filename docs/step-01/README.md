@@ -6,7 +6,6 @@
 
 ## 📘 Notes
 
-> Knowledge summary, documentation links, videos...
 > Here's a concise summary of the **Identity and Access Management (IAM)** report you provided:
 
 ---

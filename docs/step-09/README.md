@@ -4,7 +4,6 @@
 - [x] Master: **KMS – Keys, CMKs, Encryption Workflow**
 
 ## 📘 Notes
-> Knowledge summary, documentation links, videos...
 
 ### **Deep Dive: KMS – Keys, CMKs, & Encryption Workflow**
 

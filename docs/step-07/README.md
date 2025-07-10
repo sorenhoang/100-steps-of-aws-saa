@@ -6,8 +6,6 @@
 
 ## 📘 Notes
 
-> Knowledge summary, documentation links, videos...
-
 ### **Deep Dive: Landing Zone & Multi-Account Governance**
 
 As an organization's use of AWS expands, simply having multiple accounts isn't enough. You need a consistent, secure, and scalable foundation. This is where the concepts of a Landing Zone and robust multi-account governance become critical. They provide the blueprint for building and managing a secure and efficient multi-account environment at scale.

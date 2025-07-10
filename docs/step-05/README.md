@@ -4,7 +4,6 @@
 - [x] Master: **Root Account, Billing Alerts, Trusted Advisor**
 
 ## 📘 Notes
-> Knowledge summary, documentation links, videos...
 
 ### **Deep Dive: Root Account, Billing Alerts, & Trusted Advisor**
 

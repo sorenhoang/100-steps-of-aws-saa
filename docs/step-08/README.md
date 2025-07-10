@@ -4,7 +4,6 @@
 - [x] Master: **S3 Bucket Policies vs IAM Policies**
 
 ## 📘 Notes
-> Knowledge summary, documentation links, videos...
 
 ### **Deep Dive: S3 Bucket Policies vs. IAM Policies**
 
