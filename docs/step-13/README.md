@@ -399,19 +399,3 @@ This is a typical script for bootstrapping a simple web server on Amazon Linux.1
 **Explanation:** This emphasizes the "first boot only" rule. Modifying the launch template's User Data only affects new instances launched from that template in the future. It has no effect on already running instances, even if they were launched from that same template. To apply the change, the existing instance would need to be terminated and replaced.
 
 ## </details>
-
-**22. An instance needs to download a configuration file from an S3 bucket that requires SSE-KMS encryption. What must be included in the instance's IAM role permissions?**
-
-- A. Only `s3:GetObject` permission for the S3 bucket.
-- B. Only `kms:Decrypt` permission for the KMS key.
-- C. Both `s3:GetObject` for the bucket and `kms:Decrypt` for the KMS key used to encrypt the object.
-- D. Only `s3:ListBucket` permission.
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: C**
-
-**Explanation:** When an object is encrypted with SSE-KMS, two permissions are needed to retrieve it. The instance needs s3:GetObject permission to access the object in S3, and it also needs kms:Decrypt permission on the specific KMS key that was used to encrypt the object. Without the KMS permission, S3 will not be able to decrypt the object for the instance, and the download will fail.
-
-</details>
