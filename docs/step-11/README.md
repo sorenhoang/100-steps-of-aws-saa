@@ -326,11 +326,15 @@ The instance type determines the hardware of the host computer used for your ins
 - C. A block device mapping for attached storage.
 - D. The VPC and subnet configuration.
 - E. A security group configuration.
-- View Answer
-    
-    Answers: A and C
-    
-    Explanation: At its core, an AMI consists of a template for the root volume (usually a snapshot of an EBS volume) and a block device mapping, which tells the instance which storage volumes to attach at launch time and how to configure them. IAM roles, VPC/subnet settings, and security groups are all specified separately during the instance launch process, not as part of the AMI itself.
+
+<details>
+<summary>View Answer</summary>
+
+**Answers: A and C**
+
+**Explanation:** At its core, an AMI consists of a template for the root volume (usually a snapshot of an EBS volume) and a block device mapping, which tells the instance which storage volumes to attach at launch time and how to configure them. IAM roles, VPC/subnet settings, and security groups are all specified separately during the instance launch process, not as part of the AMI itself.
+
+</details>
     
 
 ---
@@ -341,11 +345,15 @@ The instance type determines the hardware of the host computer used for your ins
 - B. A Windows Server 2022 image provided by AWS.
 - C. A Debian image shared by a user in the community.
 - D. A Barracuda Firewall appliance image.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: AWS provides and maintains a set of "Quick Start" AMIs for popular operating systems like Amazon Linux, Windows, Ubuntu, and SUSE. These are considered official and are fully supported. The custom image (A), community image (C), and Marketplace image (D) come from other sources.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** AWS provides and maintains a set of "Quick Start" AMIs for popular operating systems like Amazon Linux, Windows, Ubuntu, and SUSE. These are considered official and are fully supported. The custom image (A), community image (C), and Marketplace image (D) come from other sources.
+
+</details>
     
 
 ---
@@ -356,14 +364,18 @@ The instance type determines the hardware of the host computer used for your ins
 - B. The instance's performance is throttled down to its baseline level.
 - C. The instance is converted to an M5 instance automatically.
 - D. The instance continues to burst at high performance, but at an additional cost if T3 Unlimited mode is enabled.
-- View Answer
-    
-    Answer: B or D
-    
-    Explanation: Both answers can be correct depending on the configuration, which is a key nuance of the T-family.
-    
-    - **Answer B** describes the default "Standard" mode: Once credits are depleted, the CPU performance is throttled to its low baseline level until it earns more credits.
-    - **Answer D** describes "Unlimited" mode: If enabled, the instance can continue to burst even after its credits are gone, and you pay a small, flat hourly rate for the extra CPU usage. For the SAA-C03 exam, you should be aware of both possibilities.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B or D**
+
+**Explanation:** Both answers can be correct depending on the configuration, which is a key nuance of the T-family.
+
+- **Answer B** describes the default "Standard" mode: Once credits are depleted, the CPU performance is throttled to its low baseline level until it earns more credits.
+- **Answer D** describes "Unlimited" mode: If enabled, the instance can continue to burst even after its credits are gone, and you pay a small, flat hourly rate for the extra CPU usage. For the SAA-C03 exam, you should be aware of both possibilities.
+
+</details>
 
 ---
 
@@ -373,11 +385,15 @@ The instance type determines the hardware of the host computer used for your ins
 - B. The instance uses an AWS Graviton (ARM-based) processor.
 - C. The instance is a general-purpose type.
 - D. The instance has a faster network connection.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: The "g" in an instance type name indicates that it is powered by AWS's own custom-built Graviton processors, which are based on the ARM architecture. These often provide better price-performance for many workloads compared to their x86-based counterparts.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** The "g" in an instance type name indicates that it is powered by AWS's own custom-built Graviton processors, which are based on the ARM architecture. These often provide better price-performance for many workloads compared to their x86-based counterparts.
+
+</details>
     
 
 ---
@@ -388,11 +404,15 @@ The instance type determines the hardware of the host computer used for your ins
 - B. The nature of the application's workload (e.g., CPU-bound, memory-bound, or I/O-bound).
 - C. The cost of the AMI you plan to use.
 - D. The number of security groups you need to attach.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: The most important factor in selecting an instance family is matching the hardware capabilities to the application's performance characteristics. Choosing the wrong family (e.g., a compute-optimized instance for a memory-intensive database) leads to poor performance and wasted money.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** The most important factor in selecting an instance family is matching the hardware capabilities to the application's performance characteristics. Choosing the wrong family (e.g., a compute-optimized instance for a memory-intensive database) leads to poor performance and wasted money.
+
+</details>
     
 
 ---
@@ -403,8 +423,12 @@ The instance type determines the hardware of the host computer used for your ins
 - B. To provide the software template, including the operating system, for an EC2 instance.
 - C. To provide a secure network connection to an EC2 instance.
 - D. To provide the IAM permissions for an EC2 instance.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: An AMI is a template that defines the initial software configuration of an instance. The hardware is defined by the instance type, the network connection by the VPC/subnet/security group, and the permissions by the IAM role.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** An AMI is a template that defines the initial software configuration of an instance. The hardware is defined by the instance type, the network connection by the VPC/subnet/security group, and the permissions by the IAM role.
+
+</details>
