@@ -73,7 +73,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **2. A solutions architect is designing a high-availability solution for a critical web server. If the primary instance fails, a standby instance must take over its network identity, including its private and public IP addresses, without any DNS changes. What is the most effective way to achieve this?**
@@ -91,7 +90,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** This is a classic use case for an Elastic Network Interface (ENI). Because an ENI is an independent network object, you can pre-configure it with the necessary private IP, Elastic IP, and security groups. In a failover scenario, you simply detach the ENI from the failed instance and attach it to the standby instance, which instantly assumes the exact network identity.
 
 </details>
-
 
 ---
 
@@ -111,7 +109,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **4. A company is deploying a distributed NoSQL database like Cassandra on AWS. They need to deploy a large number of instances and want to minimize the impact of a single underlying hardware failure. Which Placement Group type is best suited for this large-scale, resilient workload?**
@@ -129,7 +126,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** A Partition Placement Group is designed for large, distributed workloads. It spreads instances across logical partitions (groups of racks) and gives you visibility into this placement. This allows you to deploy many instances while ensuring that a hardware failure in one partition does not affect instances in other partitions, which is ideal for partition-aware applications like Cassandra, HDFS, and Kafka.
 
 </details>
-
 
 ---
 
@@ -149,7 +145,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **6. An EC2 instance with a single ENI is stopped and then started again. It was configured to have a public IP address. What will happen to its public and private IP addresses?**
@@ -167,7 +162,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** A standard, auto-assigned public IP is ephemeral and is released when an instance is stopped. Upon starting again, it will receive a new public IP from the pool. However, the private IP address assigned to the ENI is retained for the life of the ENI, so it will remain the same after the stop/start cycle. The only way to get a persistent public IP is to use an Elastic IP.
 
 </details>
-
 
 ---
 
@@ -187,7 +181,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **8. What is the primary purpose of an Elastic IP address?**
@@ -202,12 +195,9 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 **Answer: B**
 
-**Explanation:** An Elastic IP (EIP) is a static public IP address that you can allocate to your AWS account and attach to instances. Unlike the default auto-assigned public IPs that change when an instance is stopped/started, an EIP remains constant and can be reassigned between instances as needed, providing continuity for applications that require a fixed public IP.
+**Explanation:** An Elastic IP (EIP) is a static public IP address that you can allocate to your AWS account and attach to instances. Unlike the default auto-assigned public IPs that change when an instance is stopped/started, an EIP remains constant and can be reassigned between instances as needed, providing continuity for applications that require a fixed public IP.The key features of an EIP are that it is public and static. This provides a fixed entry point for your services that survives instance failures, reboots, or replacements, as you can simply re-associate the EIP with a new, healthy instance.
 
 </details>
-    
-    Explanation: The key features of an EIP are that it is public and static. This provides a fixed entry point for your services that survives instance failures, reboots, or replacements, as you can simply re-associate the EIP with a new, healthy instance.
-
 
 ---
 
@@ -227,7 +217,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **10. You are trying to launch a new `m5.xlarge` instance into an existing Cluster Placement Group that already contains several other instances. The launch fails with a capacity error. What is the most likely reason?**
@@ -246,7 +235,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **11. An EC2 instance needs to be part of two different subnets simultaneously to route traffic between a public-facing network and a private management network. How can this be achieved?**
@@ -264,7 +252,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** This scenario, often called "dual-homing," is a primary use case for multiple ENIs. You can attach a primary ENI from the public subnet and a secondary ENI from the private subnet to the same instance, allowing it to have a network presence in both and act as a bridge or router between them.
 
 </details>
-
 
 ---
 
@@ -285,7 +272,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **13. A Partition Placement Group is created with 5 partitions. You then launch 10 instances into this group. How will AWS distribute the instances?**
@@ -303,7 +289,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** When you launch instances into a Partition Placement Group, AWS attempts to balance the instances evenly across the number of partitions you specified. With 10 instances and 5 partitions, it would place 2 instances in each partition.
 
 </details>
-
 
 ---
 
@@ -323,7 +308,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **15. Which Placement Group strategy is designed to protect against a single point of failure at the hardware rack level for a small number of critical instances?**
@@ -341,7 +325,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** A Spread Placement Group is the only type whose explicit purpose is to ensure that every instance in the group resides on a different physical rack. This directly mitigates the risk of a single rack failure (e.g., power supply or top-of-rack switch failure) taking down your entire application.
 
 </details>
-
 
 ---
 
@@ -361,7 +344,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **17. What is the key risk associated with using a Cluster Placement Group?**
@@ -379,7 +361,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** The trade-off for the high performance of a Cluster Placement Group is reduced availability. Because all instances are packed closely together on the same underlying hardware, a failure of that single piece of hardware (like a network card or power supply on the host) can cause all instances in the group to fail at the same time.
 
 </details>
-
 
 ---
 
@@ -399,7 +380,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **19. You try to launch a new instance into a Spread Placement Group that already has 7 instances running in `us-east-1a`. What will happen?**
@@ -417,7 +397,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** A Spread Placement Group has a hard limit of 7 running instances per Availability Zone. Attempting to launch an 8th instance into the same AZ within that group will result in a launch failure.
 
 </details>
-
 
 ---
 
@@ -437,7 +416,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 
 </details>
 
-
 ---
 
 **21. A legacy application requires a license that is tied to the MAC address of the server's network card. How can you ensure this application can run on EC2 even if the instance fails and needs to be replaced?**
@@ -455,7 +433,6 @@ An EIP is a **static, public IPv4 address** designed for dynamic cloud computing
 **Explanation:** An Elastic Network Interface (ENI) has a persistent MAC address. You can attach this ENI to your primary instance and license your software against its MAC address. If the instance fails, you can detach the ENI and attach it to a new standby instance. The new instance will now have the same ENI with the same MAC address, satisfying the software's license check.
 
 </details>
-
 
 ---
 
