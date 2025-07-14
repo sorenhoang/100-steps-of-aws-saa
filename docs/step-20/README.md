@@ -5,74 +5,116 @@
 
 ## 📘 Notes
 
-### **Deep Dive: Load Balancers – CLB vs. ALB vs. NLB**
+### **Deep Dive: WAF, Shield, & Firewall Manager**
 
-Elastic Load Balancing (ELB) automatically distributes incoming application traffic across multiple targets, such as EC2 instances, containers, and IP addresses. It increases the fault tolerance and availability of your application. AWS provides three main types of load balancers, each operating at a different layer of the OSI model and designed for different use cases.
-
----
-
-### **1. Classic Load Balancer (CLB) - *Legacy*** 👴
-
-The Classic Load Balancer is the previous generation of load balancer. It can operate at both **Layer 4 (TCP)** and **Layer 7 (HTTP/HTTPS)**, but with limited functionality compared to the newer types.
-
-- **Key Features:**
-    - Provides basic load balancing across multiple EC2 instances.
-    - Supports health checks.
-    - **Legacy:** You should know what it is for the exam, but it is **not recommended for new applications**. You should always choose an Application or Network Load Balancer instead.
-- **Use Case:** Primarily for applications built within the EC2-Classic network (an older, legacy network that is being phased out).
+As applications become more exposed to the internet, they become targets for various attacks. AWS provides a suite of managed security services that work together to create a layered defense. AWS Shield protects against DDoS attacks, AWS WAF protects against application-layer attacks, and Firewall Manager helps you manage these protections centrally.
 
 ---
 
-### **2. Application Load Balancer (ALB) - *Layer 7*** 🌐
+### **1. AWS WAF (Web Application Firewall)** 🛡️
 
-The Application Load Balancer is the best choice for load balancing HTTP and HTTPS traffic. It operates at the **Application Layer (Layer 7)** of the OSI model, which means it is "application-aware" and can make intelligent routing decisions based on the content of the request.
+AWS WAF is a web application firewall that helps protect your web applications from common web exploits that could affect application availability, compromise security, or consume excessive resources. It operates at **Layer 7 (the Application Layer)**.
 
-- **Key Features:**
-    - **Content-Based Routing:** This is its most powerful feature. An ALB can inspect the request and route it to different target groups based on:
-        - **Path-based routing:** `example.com/users` goes to one target group, while `example.com/orders` goes to another.
-        - **Host-based routing:** `users.example.com` goes to one group, while `orders.example.com` goes to another.
-        - HTTP headers, query string parameters, and source IP addresses.
-    - **Target Groups:** An ALB routes traffic to *target groups*. A target group can contain EC2 instances, IP addresses (for on-premises servers), or Lambda functions.
-    - **Protocols:** HTTP, HTTPS, and gRPC.
-    - **Other Features:** Supports sticky sessions, redirects, fixed-response actions, and integrates with AWS WAF for web application security. It also supports multiple SSL certificates using Server Name Indication (SNI).
-- **Use Case:** Perfect for modern microservices-based architectures, containerized applications (ECS/EKS), and any standard web application that needs flexible routing rules.
-
----
-
-### **3. Network Load Balancer (NLB) - *Layer 4*** ⚡
-
-The Network Load Balancer is designed for extreme performance and operates at the **Transport Layer (Layer 4)**. It can handle millions of requests per second with ultra-low latency.
-
-- **Key Features:**
-    - **Extreme Performance:** It is optimized for handling volatile traffic patterns and high-throughput TCP/UDP traffic.
-    - **Static IP Address:** An NLB can have a **static Elastic IP address** assigned to it per Availability Zone. This is a key differentiator and is useful when clients or firewalls need to whitelist a fixed IP address.
-    - **Source IP Preservation:** It preserves the client-side source IP address, which is passed through to your instances. ALBs, by contrast, typically replace the source IP with their own.
-    - **Protocols:** TCP, UDP, and TLS. It does not understand HTTP headers or content. It simply forwards the connection.
-- **Use Case:** Ideal for TCP/UDP traffic where extreme performance is required. Common examples include online gaming, IoT protocols, and high-performance API endpoints that don't require HTTP-level inspection. Also used when a static IP address is a requirement for the load balancer endpoint.
+- **How it works:** You create a set of rules, called a **Web Access Control List (Web ACL)**, that define filtering logic. WAF inspects incoming HTTP/HTTPS requests and allows or blocks them based on these rules.
+- **What it protects against:**
+    - **SQL Injection:** Attackers embedding malicious SQL code in web requests to manipulate your database.
+    - **Cross-Site Scripting (XSS):** Attackers injecting malicious scripts into content that is then delivered to other users' browsers.
+    - It also protects against other common attacks like command injection, file inclusion, and more.
+- **Types of Rules:**
+    - **IP-based rules:** Block traffic from specific IP addresses or ranges.
+    - **Rate-based rules:** Block IPs that send an excessive number of requests in a short period.
+    - **Content-based rules:** Inspect parts of the request like the URI, query string, HTTP headers, and body for malicious patterns (e.g., block if the body contains `<script>`).
+    - **AWS Managed Rule Groups:** Pre-configured sets of rules managed by AWS or AWS Marketplace sellers that protect against common threats (like the OWASP Top 10). This is the easiest way to get started.
+- **Integration:** WAF is not a standalone service. It must be attached to a supported AWS resource. These include:
+    - **Amazon CloudFront** distributions
+    - **Application Load Balancers (ALB)**
+    - **Amazon API Gateway** REST APIs
+    - **AWS AppSync** GraphQL APIs
 
 ---
 
-### **Summary of Key Differences**
+### **2. AWS Shield** 🌊
 
-| Feature | Application Load Balancer (ALB) | Network Load Balancer (NLB) | Classic Load Balancer (CLB) |
-| --- | --- | --- | --- |
-| **OSI Layer** | **Layer 7** (Application) | **Layer 4** (Transport) | Layer 4/7 |
-| **Protocols** | HTTP, HTTPS, gRPC | **TCP, UDP, TLS** | TCP, SSL/TLS, HTTP, HTTPS |
-| **Routing** | **Content-based** (Path, Host, etc.) | Forwards connection directly | Basic round-robin |
-| **Static IP** | No | **Yes (one per AZ)** | No |
-| **Use Case** | Web applications, microservices, containers | **Extreme performance, gaming, static IPs** | Legacy EC2-Classic apps |
-| **IP Preservation** | No (uses X-Forwarded-For header) | **Yes** (preserves source IP) | No (uses X-Forwarded-For header) |
+AWS Shield is a managed **Distributed Denial of Service (DDoS)** protection service that safeguards applications running on AWS. DDoS attacks attempt to make an online service unavailable by overwhelming it with traffic from multiple sources.
+
+There are two tiers of AWS Shield:
+
+- **AWS Shield Standard:**
+    - **Protection:** Defends against most common, network and transport layer (Layer 3 & 4) DDoS attacks, such as SYN floods or UDP reflection attacks.
+    - **Cost:** **Free**. It is automatically enabled for all AWS customers on services like CloudFront, Route 53, and Elastic Load Balancers.
+    - **Scope:** Provides baseline, always-on network flow monitoring and protection.
+- **AWS Shield Advanced:**
+    - **Protection:** Provides significantly more sophisticated and powerful protection for internet-facing applications on EC2, ELB, CloudFront, Route 53, and Global Accelerator. It offers enhanced detection, protection against large and sophisticated Layer 7 (application layer) DDoS attacks, and near real-time visibility into attacks.
+    - **Key Features:**
+        1. **24/7 DDoS Response Team (DRT):** You get access to AWS security experts who can help you during a DDoS attack.
+        2. **DDoS Cost Protection:** Provides financial protection against scaling charges incurred as a result of a DDoS attack. For example, if your Auto Scaling group scales out to handle attack traffic, AWS may provide service credits for those charges.
+        3. **Advanced Reporting:** Gives you detailed diagnostics and reports on attacks targeting your resources.
+        4. **Bundled AWS WAF:** Using AWS WAF is included at no extra cost for your protected resources.
+    - **Cost:** Paid service with a significant monthly fee plus data transfer fees. It is designed for businesses with critical, availability-sensitive applications.
+
+---
+
+### **3. AWS Firewall Manager** 🧑‍✈️
+
+AWS Firewall Manager is a security management service that allows you to centrally configure and manage firewall rules across multiple accounts and resources in your **AWS Organization**.
+
+- **Purpose:** As you scale to dozens or hundreds of accounts, manually configuring WAF rules or security groups in each account becomes unmanageable. Firewall Manager solves this by providing a single place to deploy and monitor your security rules.
+- **What it Manages:**
+    - **AWS WAF rules:** Centrally deploy a common set of WAF rules to all your ALBs, API Gateways, and CloudFront distributions across the organization.
+    - **AWS Shield Advanced:** Centrally enable Shield Advanced protection for all relevant resources.
+    - **VPC Security Groups:** Audit and control security groups (e.g., enforce a rule that blocks inbound SSH from the internet on all instances).
+    - **AWS Network Firewall:** Centrally deploy and manage stateful network firewall rules.
+    - **Route 53 Resolver DNS Firewall:** Centrally deploy DNS filtering rules.
+- **How it Works:** You define a **policy**, select which accounts or OUs it applies to, and Firewall Manager automatically enforces that policy, ensuring that both existing and newly created resources are compliant.
 
 ---
 
 ### **AWS SAA-C03 Style Questions & Explanations**
 
-**1. A company is building a microservices-based application. They need a load balancer that can route traffic to different services based on the URL path. For example, requests to `/api/users` should go to the user service, and requests to `/api/orders` should go to the order service. Which load balancer should they choose?**
+**1. A company's web application is experiencing a common web attack where malicious SQL code is being inserted into user input fields to exploit the backend database. Which AWS service is specifically designed to prevent this type of attack?**
 
-- A. Classic Load Balancer
-- B. Network Load Balancer
-- C. Application Load Balancer
-- D. AWS Global Accelerator
+- A. AWS Shield Advanced
+- B. AWS WAF
+- C. Network ACLs
+- D. Amazon GuardDuty
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** This describes a SQL Injection attack, which is a Layer 7 (application-layer) exploit. AWS WAF is the service designed to inspect HTTP/HTTPS requests and block common exploits like SQL Injection and Cross-Site Scripting (XSS). Shield (A) is for DDoS, and NACLs (C) operate at the network layer, not the application layer.
+</details>
+    
+
+---
+
+**2. All AWS customers receive automatic protection against common, network-layer DDoS attacks at no additional cost. Which service provides this baseline protection?**
+
+- A. AWS WAF
+- B. AWS Shield Standard
+- C. AWS Shield Advanced
+- D. AWS Firewall Manager
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** AWS Shield Standard is enabled by default for all customers and provides protection against most common network and transport layer (Layer 3/4) DDoS attacks. This service is free and always-on for services like ELB, CloudFront, and Route 53.
+</details>
+    
+
+---
+
+**3. A large enterprise with hundreds of AWS accounts wants to ensure that a mandatory set of AWS WAF rules is applied to every new Application Load Balancer created in any account within their AWS Organization. What is the most efficient way to manage and enforce this policy?**
+
+- A. Manually create the WAF rules in each account.
+- B. Use AWS Shield Advanced to automatically deploy the rules.
+- C. Use AWS Firewall Manager to create a policy that deploys the WAF rules across the organization.
+- D. Create a Lambda function that triggers on new ALBs and applies the WAF rules.
 
 <details>
 <summary>View Answer</summary>
@@ -80,18 +122,57 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: C**
 
-**Explanation:** This is the primary use case for an Application Load Balancer (ALB). Because it operates at Layer 7 (the application layer), it can inspect the content of the request, including the URL path. This allows for advanced, content-based routing rules, making it perfect for microservices architectures.
+**Explanation:** This is the primary use case for AWS Firewall Manager. It is designed for centralized management of security rules across an AWS Organization. You can create a Firewall Manager policy to automatically associate a common Web ACL with all ALBs (or other supported resources) in specified accounts or OUs, ensuring consistent protection.
 </details>
     
 
 ---
 
-**2. A high-performance online gaming application uses a custom UDP-based protocol for communication between clients and servers. The company needs a load balancer that can handle millions of requests per second with ultra-low latency. Which load balancer is the most appropriate choice?**
+**4. A company subscribes to AWS Shield Advanced. During a large DDoS attack, their Auto Scaling group scales out significantly, leading to a large EC2 bill. What benefit does Shield Advanced offer in this situation?**
 
-- A. Classic Load Balancer
+- A. It automatically scales the instances back in.
+- B. It provides DDoS Cost Protection, offering service credits for charges incurred due to the attack.
+- C. It blocks the attack traffic at the Internet Gateway.
+- D. It provides no financial protection; it only mitigates the attack.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** A key feature of AWS Shield Advanced is DDoS Cost Protection. It provides a safeguard against bill shock caused by scaling up resources to absorb a DDoS attack. Customers can request service credits for these attack-related charges.
+</details>
+    
+
+---
+
+**5. AWS WAF can be integrated with which of the following AWS services? (Select TWO)**
+
+- A. Network Load Balancer
 - B. Application Load Balancer
-- C. Network Load Balancer
-- D. An Auto Scaling group without a load balancer.
+- C. EC2 Instances
+- D. Amazon CloudFront
+- E. NAT Gateway
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answers: B and D**
+
+**Explanation:** AWS WAF is a Layer 7 firewall and can only be attached to AWS resources that operate at Layer 7. The primary integration points are Application Load Balancers (ALB) and Amazon CloudFront distributions. It also integrates with API Gateway and AppSync. It cannot be attached directly to an EC2 instance or a Layer 4 service like an NLB.
+</details>
+    
+
+---
+
+**6. What is the primary difference between AWS Shield Standard and AWS Shield Advanced?**
+
+- A. Shield Standard protects against Layer 7 attacks, while Shield Advanced protects against Layer 3/4 attacks.
+- B. Shield Standard is a paid service, while Shield Advanced is free.
+- C. Shield Advanced provides access to the 24/7 AWS DDoS Response Team (DRT) and cost protection, while Shield Standard does not.
+- D. Shield Standard is managed by Firewall Manager, while Shield Advanced is not.
 
 <details>
 <summary>View Answer</summary>
@@ -99,18 +180,18 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: C**
 
-**Explanation:** A Network Load Balancer (NLB) is the correct choice for high-throughput, low-latency UDP traffic. It operates at Layer 4 and is optimized for extreme performance. An Application Load Balancer (B) does not support the UDP protocol.
+**Explanation:** The key value propositions of Shield Advanced are the additional services and protections it offers beyond the baseline. This includes access to human experts on the DDoS Response Team (DRT), financial protection against DDoS-related charges, and more sophisticated detection of large-scale attacks.
 </details>
     
 
 ---
 
-**3. A company has a legacy application running on EC2 that requires its clients to whitelist a single, unchanging public IP address for the load balancer. Which load balancer type can provide a static Elastic IP address?**
+**7. A WAF rule is configured to block requests if the request originates from a specific country. What type of rule is this?**
 
-- A. Application Load Balancer
-- B. Classic Load Balancer
-- C. Network Load Balancer
-- D. None of the above.
+- A. Rate-based rule
+- B. SQL injection match rule
+- C. Geographic match rule
+- D. Size constraint rule
 
 <details>
 <summary>View Answer</summary>
@@ -118,18 +199,18 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: C**
 
-**Explanation:** A key feature and major differentiator of the Network Load Balancer (NLB) is its ability to have a static Elastic IP address assigned to it in each Availability Zone it covers. This provides a predictable, fixed IP address that is essential for scenarios involving firewall rules or legacy clients.
+**Explanation:** AWS WAF supports geographic match conditions, allowing you to create rules that allow or block requests based on the country of origin, as determined by the source IP address.
 </details>
     
 
 ---
 
-**4. What is a key feature of an Application Load Balancer (ALB) that is not available on a Network Load Balancer (NLB)?**
+**8. Which AWS service is required as a prerequisite for using AWS Firewall Manager?**
 
-- A. The ability to handle TCP traffic.
-- B. The ability to route traffic based on the HTTP host header.
-- C. The ability to be placed in multiple Availability Zones.
-- D. The ability to use health checks.
+- A. AWS Control Tower
+- B. AWS Organizations
+- C. AWS Trusted Advisor
+- D. AWS Systems Manager
 
 <details>
 <summary>View Answer</summary>
@@ -137,18 +218,37 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: B**
 
-**Explanation:** Content-based routing is exclusive to the Application Load Balancer. An ALB can inspect Layer 7 data like HTTP host headers, paths, and query strings to make intelligent routing decisions. An NLB operates at Layer 4 and simply forwards packets based on IP and port, without inspecting the application content.
+**Explanation:** AWS Firewall Manager is designed for multi-account management. Therefore, you must have AWS Organizations set up first. Firewall Manager uses the organizational structure (OUs and accounts) to apply its security policies.
 </details>
     
 
 ---
 
-**5. At which layer of the OSI model does a Network Load Balancer operate?**
+**9. What does a "rate-based rule" in AWS WAF do?**
 
-- A. Layer 3 (Network)
-- B. Layer 4 (Transport)
-- C. Layer 5 (Session)
-- D. Layer 7 (Application)
+- A. It blocks requests based on their country of origin.
+- B. It blocks requests that contain malicious SQL code.
+- C. It tracks the rate of requests from individual IP addresses and blocks an IP if its request rate exceeds a defined threshold.
+- D. It charges users based on the number of requests they make.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** A rate-based rule is a powerful tool to mitigate web-layer DDoS attacks or brute-force login attempts. You set a threshold (e.g., 2000 requests per 5 minutes), and WAF will automatically block any source IP that exceeds this rate.
+</details>
+    
+
+---
+
+**10. A company wants to use a pre-configured set of WAF rules that protect against the most common vulnerabilities, such as those listed in the OWASP Top 10. What is the easiest way to implement this?**
+
+- A. Write custom WAF rules for each of the OWASP Top 10 vulnerabilities.
+- B. Use an AWS Managed Rule Group for WAF.
+- C. Subscribe to AWS Shield Advanced.
+- D. Create a Network ACL with rules for each vulnerability.
 
 <details>
 <summary>View Answer</summary>
@@ -156,18 +256,18 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: B**
 
-**Explanation:** A Network Load Balancer operates at Layer 4 (Transport). This means it works with TCP and UDP protocols and makes decisions based on information like IP addresses and port numbers.
+**Explanation:** AWS provides Managed Rule Groups which are curated sets of rules designed to provide protection against common threats without requiring you to write the rules yourself. There are specific managed rule groups for threats like the OWASP Top 10, known bad IPs, Amazon IP reputation lists, and more.
 </details>
     
 
 ---
 
-**6. An Application Load Balancer is placed in front of a fleet of web servers. The servers need to know the original IP address of the client making the request for logging and analytics. How can the web servers get this information?**
+**11. Which service provides protection against volumetric UDP reflection attacks?**
 
-- A. The source IP of the incoming packet will be the client's original IP address.
-- B. The ALB automatically adds the client's IP to the `X-Forwarded-For` HTTP header.
-- C. This is not possible; the client's IP is lost when using an ALB.
-- D. By querying the Network Load Balancer that sits in front of the ALB.
+- A. AWS WAF
+- B. AWS Shield
+- C. AWS Firewall Manager
+- D. Amazon Inspector
 
 <details>
 <summary>View Answer</summary>
@@ -175,18 +275,134 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: B**
 
-**Explanation:** An ALB terminates the client's connection and initiates a new one to the backend target. In this process, the source IP of the packet arriving at the web server is the IP of the ALB itself. To preserve the original client IP, the ALB adds it to the X-Forwarded-For header in the HTTP request. The application must be configured to read this header to get the client's IP.
+**Explanation:** UDP reflection attacks are a common type of Layer 3/4 DDoS attack. AWS Shield (both Standard and Advanced) is the service designed to detect and mitigate these network-layer volumetric attacks. WAF operates at Layer 7 and would not be effective against this type of attack.
 </details>
     
 
 ---
 
-**7. Which load balancer is considered a legacy product and is no longer recommended for new application deployments?**
+**12. A company has deployed AWS WAF on its Application Load Balancer. They now want to deploy the exact same WAF rules on their Amazon CloudFront distribution. What is the most efficient method?**
 
-- A. Application Load Balancer
-- B. Network Load Balancer
-- C. Gateway Load Balancer
-- D. Classic Load Balancer
+- A. Manually re-create all the rules in a new Web ACL for CloudFront.
+- B. Create one Web ACL and associate it with both the Application Load Balancer and the CloudFront distribution.
+- C. Use AWS Firewall Manager to apply the same policy to both resources.
+- D. This is not possible; a Web ACL can only be associated with one resource type.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B or C**
+
+**Explanation:** Both B and C are valid approaches.
+    
+- A Web ACL can be associated with multiple resources of the same type (e.g., multiple ALBs) or different types (an ALB and a CloudFront distribution). So, creating one Web ACL and associating it with both is an efficient solution (B).
+- If managing this at scale across many accounts, **AWS Firewall Manager (C)** would be the superior solution for applying the policy centrally. In a single-account context, B is the most direct answer.
+</details>
+
+---
+
+**13. A company is using AWS Shield Advanced. What additional benefit do they receive regarding AWS WAF?**
+
+- A. They get a 50% discount on WAF usage.
+- B. They can use AWS WAF on Network Load Balancers.
+- C. The cost of using AWS WAF on their protected resources is included with their Shield Advanced subscription.
+- D. They get access to a special version of WAF called WAF Advanced.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** A key benefit of subscribing to AWS Shield Advanced is that the usage costs for AWS WAF on any resource protected by Shield Advanced are waived. This encourages customers to use both services together for layered protection.
+</details>
+    
+
+---
+
+**14. What is the primary role of the DDoS Response Team (DRT) available to AWS Shield Advanced customers?**
+
+- A. To write custom WAF rules for your application.
+- B. To provide 24/7 expert assistance during a DDoS attack to help with mitigation.
+- C. To manage your AWS Firewall Manager policies.
+- D. To perform penetration testing on your application.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** The DDoS Response Team (DRT) is a group of AWS experts who can be engaged during a critical DDoS event. They help analyze the attack and can apply additional, non-public mitigations to help keep your application online. This human-in-the-loop support is a major feature of the Shield Advanced service.
+</details>
+    
+
+---
+
+**15. What is a Web ACL in the context of AWS WAF?**
+
+- A. A type of network firewall rule.
+- B. A collection of rules that define the criteria for inspecting and filtering web traffic.
+- C. A log of all allowed and blocked web requests.
+- D. The IAM policy required to use AWS WAF.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** A Web Access Control List (Web ACL) is the core resource you create in AWS WAF. It is the container for all the rules (IP match, geographic match, SQL injection match, etc.) that you want to apply to your web traffic. You then associate this Web ACL with a resource like an ALB or CloudFront distribution.
+</details>
+    
+
+---
+
+**16. How does AWS Firewall Manager help with compliance?**
+
+- A. By encrypting all data at rest.
+- B. By providing a single point to configure, enforce, and audit security rules across an entire AWS Organization.
+- C. By performing vulnerability scans on EC2 instances.
+- D. By providing free access to third-party auditors.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** Firewall Manager provides a centralized way to enforce a security baseline. This helps with compliance by ensuring that all accounts and resources adhere to mandatory rules (e.g., "all public web applications must have WAF protection"). It also provides a central view to audit this compliance, simplifying the process of proving to auditors that security controls are in place.
+</details>
+    
+
+---
+
+**17. An application is being targeted by a DDoS attack that attempts to exhaust server resources with a flood of legitimate-looking HTTP GET requests. This is an example of what kind of attack?**
+
+- A. A Layer 3 (Network Layer) attack.
+- B. A Layer 4 (Transport Layer) attack.
+- C. A Layer 7 (Application Layer) attack.
+- D. A DNS amplification attack.
+
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** This is a classic Layer 7 DDoS attack. The requests themselves are well-formed (unlike a SYN flood), but they come in such high volume that they overwhelm the application server's ability to process them. Shield Advanced and AWS WAF (especially with rate-based rules) are designed to mitigate these attacks.
+</details>
+    
+
+---
+
+**18. Which service would you use to centrally manage and deploy VPC security group rules across all accounts in your organization?**
+
+- A. AWS Systems Manager
+- B. AWS WAF
+- C. AWS Config
+- D. AWS Firewall Manager
 
 <details>
 <summary>View Answer</summary>
@@ -194,18 +410,18 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: D**
 
-**Explanation:** The Classic Load Balancer (CLB) is the first-generation load balancer. While still supported for existing applications, AWS strongly recommends using Application Load Balancers or Network Load Balancers for all new architectures due to their enhanced features, performance, and flexibility.
+**Explanation:** In addition to managing WAF and Shield, AWS Firewall Manager can also be used to manage and audit VPC security groups. For example, you can create a policy to audit for any security groups that allow unrestricted SSH access and have it automatically remediate the issue.
 </details>
     
 
 ---
 
-**8. An Application Load Balancer needs to serve traffic for `https://api.example.com` and `https://www.example.com` from the same listener on port 443. How can this be achieved?**
+**19. A company wants to protect its Application Load Balancer from a Cross-Site Scripting (XSS) attack. What is the most direct solution?**
 
-- A. This is not possible; a separate ALB is needed for each domain.
-- B. Use multiple SSL certificates on the ALB and Server Name Indication (SNI).
-- C. Use a Network Load Balancer instead.
-- D. Configure two separate listeners, one for each domain.
+- A. Enable AWS Shield Standard.
+- B. Associate an AWS WAF Web ACL with a rule to block XSS patterns.
+- C. Create a Network ACL rule to block port 443.
+- D. Place the ALB behind a NAT Gateway.
 
 <details>
 <summary>View Answer</summary>
@@ -213,37 +429,18 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: B**
 
-**Explanation:** An Application Load Balancer supports Server Name Indication (SNI), which allows you to associate multiple SSL certificates with a single secure listener. The ALB will automatically inspect the hostname requested by the client and present the correct certificate, allowing you to host multiple secure sites behind a single ALB listener.
+**Explanation:** XSS is a Layer 7 attack. The most direct and appropriate way to block it is by using AWS WAF. You can create a Web ACL with either a custom rule or, more easily, use the AWS Managed Rule Group for Core Rule Set (CRS), which includes protection against XSS patterns.
 </details>
     
 
 ---
 
-**9. A company wants to load balance traffic to a fleet of EC2 instances and also to an on-premises server connected via AWS Direct Connect. Which load balancer target type would allow this?**
+**20. What is the scope of AWS Shield Standard's protection?**
 
-- A. You can only load balance to EC2 instances.
-- B. A target group that uses IP addresses as targets.
-- C. A target group that uses Lambda functions as targets.
-- D. A target group that uses instance IDs as targets.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: B**
-
-**Explanation:** Both Application Load Balancers and Network Load Balancers support using IP addresses as targets. This powerful feature allows you to register any IP address, including those of servers running in your on-premises data center, as targets in a target group, effectively extending the load balancer's reach beyond the VPC.
-</details>
-    
-
----
-
-**10. Which load balancer natively preserves the client's source IP address without needing to use a proxy protocol or special HTTP headers?**
-
-- A. Application Load Balancer
-- B. Classic Load Balancer
-- C. Network Load Balancer
-- D. All load balancers preserve the source IP address.
+- A. It only protects resources within a single Availability Zone.
+- B. It protects against all types of Layer 7 attacks.
+- C. It provides automatic protection for supported AWS resources against common network and transport layer DDoS attacks.
+- D. It only protects EC2 instances with Elastic IP addresses.
 
 <details>
 <summary>View Answer</summary>
@@ -251,56 +448,18 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: C**
 
-**Explanation:** Because the Network Load Balancer operates at Layer 4 and forwards the connection, the original source IP address of the client is preserved in the TCP/UDP packet header that arrives at the backend target instance. This simplifies network analysis and source IP-based filtering.
+**Explanation:** Shield Standard provides a baseline level of protection against the most common, volumetric DDoS attacks at Layer 3 and Layer 4. This protection is automatically and transparently applied to edge services like CloudFront, Route 53, and ELB.
 </details>
     
 
 ---
 
-**11. A web application uses WebSockets for real-time communication. Which load balancer type provides full support for the WebSocket protocol?**
+**21. A Firewall Manager policy is created to enforce a specific WAF Web ACL. What happens when a developer creates a new Application Load Balancer in an account that is within the scope of this policy?**
 
-- A. Both Application Load Balancers and Network Load Balancers.
-- B. Only Network Load Balancers.
-- C. Only Classic Load Balancers.
-- D. WebSockets are not supported by any ELB.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: A**
-
-**Explanation:** Both the Application Load Balancer and the Network Load Balancer provide support for WebSockets. The ALB understands WebSockets as an upgrade to an HTTP connection, while the NLB supports them as a long-lived TCP connection.
-</details>
-    
-
----
-
-**12. An Application Load Balancer is configured with a feature that directs all requests from a specific user to the same target instance for the duration of their session. What is this feature called?**
-
-- A. Session Draining
-- B. Sticky Sessions (Session Affinity)
-- C. Cross-Zone Load Balancing
-- D. Health Checks
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: B**
-
-**Explanation:** Sticky Sessions, also known as session affinity, is a feature that uses a cookie to ensure that subsequent requests from the same client are sent to the same backend target. This is useful for applications that store user session information locally on the instance.
-</details>
-    
-
----
-
-**13. A solutions architect is choosing between an ALB and an NLB. The primary requirement is to route traffic based on a query string parameter in the URL (e.g., `?productID=123`). Which load balancer must be used?**
-
-- A. Network Load Balancer, as it's faster.
-- B. Either one can be used.
-- C. Application Load Balancer, as it operates at Layer 7.
-- D. Classic Load Balancer is the only one with this feature.
+- A. The developer must manually attach the Web ACL.
+- B. The launch of the ALB will fail until the policy is removed.
+- C. Firewall Manager will automatically detect the new ALB and associate the specified Web ACL with it.
+- D. The developer will receive an email notification reminding them to attach the Web ACL.
 
 <details>
 <summary>View Answer</summary>
@@ -308,171 +467,18 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: C**
 
-**Explanation:** Routing based on a query string parameter is a form of content-based routing. This requires the load balancer to inspect the application-level data (Layer 7). Only the Application Load Balancer has this capability.
+**Explanation:** A key benefit of Firewall Manager is its ability to enforce compliance on both existing and new resources. It continuously monitors the accounts within its scope and will automatically apply the configured policy (e.g., attach the required WAF Web ACL) to any new resource that matches the policy's criteria.
 </details>
     
 
 ---
 
-**14. What is the function of a "target group" in the context of an Application Load Balancer?**
+**22. To get access to the AWS DDoS Response Team (DRT), what must a customer do?**
 
-- A. It defines the rules for routing traffic, such as path-based routing.
-- B. It is a logical grouping of registered targets (like EC2 instances) to which the ALB routes traffic.
-- C. It specifies the listener port and protocol for the load balancer.
-- D. It defines the health check settings for the load balancer itself.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: B**
-
-**Explanation:** A target group is simply a collection of destinations for traffic. You register your EC2 instances, IP addresses, or Lambda functions into a target group. The ALB then sends traffic to the healthy targets within that group. A single ALB can have multiple listener rules that route to different target groups.
-</details>
-    
-
----
-
-**15. By default, is cross-zone load balancing enabled for Application Load Balancers and Network Load Balancers?**
-
-- A. It is enabled by default for both.
-- B. It is disabled by default for both.
-- C. It is enabled by default for ALBs but disabled by default for NLBs.
-- D. It is enabled by default for NLBs but disabled by default for ALBs.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: C**
-
-**Explanation:** This is a key operational difference. For an Application Load Balancer, cross-zone load balancing is enabled by default, meaning it distributes traffic evenly across all registered instances in all enabled Availability Zones. For a Network Load Balancer, it is disabled by default, meaning it only distributes traffic to targets within its own AZ. Enabling it for an NLB can incur inter-AZ data transfer costs.
-</details>
-    
-
----
-
-**16. An Application Load Balancer listener rule has a "fixed-response" action configured. What does this do?**
-
-- A. It forwards the request to a fixed, single EC2 instance.
-- B. It responds to the client with a static HTTP response code and an optional message, without forwarding the request.
-- C. It redirects the client to a different URL.
-- D. It forwards the request to a Lambda function.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: B**
-
-**Explanation:** A fixed-response action is a useful feature where the ALB itself can generate a response. This is often used to respond to requests that don't match any other rule with a custom 404 Not Found page or to implement a maintenance page by responding with a 503 Service Unavailable code without needing any backend infrastructure.
-</details>
-    
-
----
-
-**17. Which load balancer would you choose for a simple web application if your only goal is to distribute HTTP traffic evenly across a few EC2 instances with minimal configuration?**
-
-- A. Network Load Balancer
-- B. Classic Load Balancer
-- C. Application Load Balancer
-- D. AWS Global Accelerator
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: C**
-
-**Explanation:** Even for simple web applications, the Application Load Balancer is the modern standard. It provides more features, better performance, and more security options than the legacy Classic Load Balancer. While a CLB would work, an ALB is the recommended best practice for any new HTTP/HTTPS workload.
-</details>
-    
-
----
-
-**18. Which components of an ALB can be targets in a target group? (Select THREE)**
-
-- A. EC2 Instances
-- B. Security Groups
-- C. IP Addresses
-- D. Lambda Functions
-- E. S3 Buckets
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answers: A, C, and D**
-
-**Explanation:** An Application Load Balancer is highly flexible in its target types. It can route traffic to traditional EC2 Instances, to specific IP Addresses (useful for containers or on-premises servers), and it can directly invoke a Lambda Function to run serverless web applications.
-</details>
-    
-
----
-
-**19. A Network Load Balancer is configured with a TCP listener on port 8080. One of the target instances has a firewall that only allows traffic on port 80. What will happen to requests sent to this target?**
-
-- A. The NLB will automatically translate the port from 8080 to 80.
-- B. The requests will be blocked by the instance's firewall.
-- C. The NLB will report the target as healthy but traffic will fail.
-- D. This configuration is not possible.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: B**
-
-**Explanation:** The Network Load Balancer forwards the TCP packet with the destination port intact (port 8080). When this packet arrives at the instance, the instance's own firewall (like Security Groups or an OS firewall) will evaluate it. Since the firewall only allows port 80, the packet for port 8080 will be dropped.
-</details>
-    
-
----
-
-**20. You want to secure your web application by using AWS WAF. Which load balancer can be integrated with AWS WAF?**
-
-- A. Network Load Balancer
-- B. Classic Load Balancer
-- C. Application Load Balancer
-- D. All of the above.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: C**
-
-**Explanation:** AWS WAF (Web Application Firewall) is a Layer 7 security service that protects against common web exploits like SQL injection and cross-site scripting. It can only be integrated with Layer 7 services, making the Application Load Balancer the correct choice.
-</details>
-    
-
----
-
-**21. An ALB sits in front of an Auto Scaling group of web servers. The ALB listener is configured to use HTTPS. How is the connection between the ALB and the backend EC2 instances handled?**
-
-- A. The connection between the ALB and the EC2 instances must also be HTTPS.
-- B. The connection between the ALB and the EC2 instances can be HTTP, as the traffic is within your secure VPC.
-- C. The ALB encrypts the traffic using the EC2 instance's public key.
-- D. The connection is handled by a Network Load Balancer.
-
-<details>
-<summary>View Answer</summary>
-<br>
-
-**Answer: B**
-
-**Explanation:** This is a very common architecture. The ALB terminates the SSL/TLS connection from the client, meaning it decrypts the traffic. It can then initiate a new, unencrypted HTTP connection to the backend instances. This offloads the SSL processing from your EC2 instances and simplifies certificate management. While you can re-encrypt the traffic to the backend, it's very common to use HTTP for this internal leg of the journey.
-</details>
-    
-
----
-
-**22. Which load balancer type is best suited for achieving the highest possible network throughput for TCP-based applications?**
-
-- A. Application Load Balancer with a performance-mode enabled.
-- B. Classic Load Balancer with TCP listeners.
-- C. AWS Global Accelerator.
-- D. Network Load Balancer.
+- A. Nothing, the DRT is available to all AWS customers.
+- B. Open a "critical" support case with AWS Support.
+- C. Subscribe to the AWS Business Support plan.
+- D. Subscribe to AWS Shield Advanced.
 
 <details>
 <summary>View Answer</summary>
@@ -480,5 +486,5 @@ The Network Load Balancer is designed for extreme performance and operates at th
 
 **Answer: D**
 
-**Explanation:** The Network Load Balancer is architected from the ground up for performance. It bypasses much of the connection processing that an ALB does, allowing it to forward TCP packets at extremely high speeds with minimal latency, making it the clear choice for throughput-intensive TCP workloads.
+**Explanation:** Access to the 24/7 DDoS Response Team (DRT) is an exclusive feature of the AWS Shield Advanced service. It is not included with Shield Standard or any of the standard support plans.
 </details>
