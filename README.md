@@ -23,7 +23,7 @@
 - [Step 17](./docs/step-17) - Placement Groups, ENI, EIP
 - [Step 18](./docs/step-18) - Auto Scaling Groups
 - [Step 19](./docs/step-19) - Load Balancers – CLB vs ALB vs NLB
-- [Step 20](./docs/step-20) - EC2 Troubleshooting & Lab
+- [Step 20](./docs/step-20) - AWS WAF, AWS Shield, AWS Firewall Manager
 - [Step 21](./docs/step-21) - S3 Storage Classes & Basics
 - [Step 22](./docs/step-22) - S3 Versioning & Lifecycle Policies
 - [Step 23](./docs/step-23) - S3 Encryption, Static Website Hosting

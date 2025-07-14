@@ -1,7 +1,7 @@
-# Step 20: EC2 Troubleshooting & Lab
+# Step 20: AWS WAF, AWS Shield, AWS Firewall Manager
 
 ## 🎯 Objective
-- [ ] Master: **EC2 Troubleshooting & Lab**
+- [ ] Master: **AWS WAF, AWS Shield, AWS Firewall Manager**
 
 ## 📘 Notes
 > Knowledge summary, documentation links, videos...
