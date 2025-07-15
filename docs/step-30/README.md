@@ -1,15 +1,8 @@
 # Step 30: Lab: Static Website on S3 + CloudFront
 
 ## 🎯 Objective
-- [ ] Master: **Lab: Static Website on S3 + CloudFront**
+- [x] Master: **Lab: Static Website on S3 + CloudFront**
 
 ## 📘 Notes
-> Knowledge summary, documentation links, videos...
 
-## 🧪 Practice
-- [ ] Lab/demo description (if any)
-
-## ✅ Checklist
-- [ ] Read official documentation
-- [ ] Watch tutorial videos
-- [ ] Complete quiz/flashcards
+Please follow the lab instructions step by step to successfully deploy a static website using Amazon S3 and configure CloudFront as the content delivery network.
