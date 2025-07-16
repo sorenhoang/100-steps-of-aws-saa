@@ -1,6 +1,6 @@
-# Step 50: Lab: RDS Snapshot Recovery
+# Step 50: ECS, Fargate, Task 
 
 ## 🎯 Objective
-- [x] Master: **Lab: RDS Snapshot Recovery**
+- [x] Master: **ECS, Fargate, Task**
 
 ## 📘 Notes

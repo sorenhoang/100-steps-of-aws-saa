@@ -53,7 +53,7 @@
 - [Step 47](./docs/step-47) - DynamoDB DAX & Performance
 - [Step 48](./docs/step-48) - ElastiCache – Redis vs Memcached
 - [Step 49](./docs/step-49) - Specialty Databases – Neptune, QLDB, Timestream
-- [Step 50](./docs/step-50) - Lab: RDS Snapshot Recovery
+- [Step 50](./docs/step-50) - ECS, Fargate, Task
 - [Step 51](./docs/step-51) - Lambda Fundamentals & Limits
 - [Step 52](./docs/step-52) - Lambda Event Sources & Triggers
 - [Step 53](./docs/step-53) - API Gateway – REST vs HTTP vs WebSocket
@@ -63,7 +63,7 @@
 - [Step 57](./docs/step-57) - SNS Topics & Fan‑out Pattern
 - [Step 58](./docs/step-58) - EventBridge vs CloudWatch Events
 - [Step 59](./docs/step-59) - Kinesis Streams & Firehose
-- [Step 60](./docs/step-60) - Lab: Lambda + API Gateway CRUD
+- [Step 60](./docs/step-60) - EKS
 - [Step 61](./docs/step-61) - CloudWatch Metrics, Alarms & Dashboards
 - [Step 62](./docs/step-62) - CloudTrail, X‑Ray Tracing
 - [Step 63](./docs/step-63) - AWS Config, Inspector, GuardDuty

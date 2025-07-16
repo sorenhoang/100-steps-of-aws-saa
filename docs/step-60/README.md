@@ -1,7 +1,7 @@
-# Step 60: Lab: Lambda + API Gateway CRUD
+# Step 60: EKS
 
 ## 🎯 Objective
-- [ ] Master: **Lab: Lambda + API Gateway CRUD**
+- [ ] Master: **EKS**
 
 ## 📘 Notes
 > Knowledge summary, documentation links, videos...
