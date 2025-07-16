@@ -2,7 +2,7 @@
 
 ## 🎯 Objective
 
-- [ ] Master: **Route 53 Routing Policies & DNS TTL**
+- [x] Master: **Route 53 Routing Policies & DNS TTL**
 
 ## 📘 Notes
 

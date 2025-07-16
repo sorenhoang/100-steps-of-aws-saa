@@ -2,7 +2,7 @@
 
 ## 🎯 Objective
 
-- [ ] Master: **CloudFront Basics & Edge Caching**
+- [x] Master: **CloudFront Basics & Edge Caching**
 
 ## 📘 Notes
 
@@ -61,9 +61,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. An Application Load Balancer
 - C. Amazon CloudFront
 - D. S3 Cross-Region Replication to the `ap-southeast-2` (Sydney) region.
-- View Answer
-  Answer: C
-  Explanation: This is the primary use case for Amazon CloudFront. As a Content Delivery Network (CDN), it will cache the website's static assets (images, videos) at an AWS Edge Location in Australia. This means Australian users will be served the content from a nearby location with low latency, instead of having to fetch it all the way from Ireland.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** This is the primary use case for Amazon CloudFront. As a Content Delivery Network (CDN), it will cache the website's static assets (images, videos) at an AWS Edge Location in Australia. This means Australian users will be served the content from a nearby location with low latency, instead of having to fetch it all the way from Ireland.
+
+</details>
 
 ---
 
@@ -73,9 +79,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. To cache content closer to end-users to reduce latency.
 - C. To run regional data processing jobs.
 - D. To store the master copy of all S3 objects.
-- View Answer
-  Answer: B
-  Explanation: Edge Locations are the heart of a CDN. They are a global network of data centers whose primary function is to store a cache of your content. By serving content from a location that is geographically close to the user, CloudFront dramatically reduces the round-trip time and improves performance.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** Edge Locations are the heart of a CDN. They are a global network of data centers whose primary function is to store a cache of your content. By serving content from a location that is geographically close to the user, CloudFront dramatically reduces the round-trip time and improves performance.
+
+</details>
 
 ---
 
@@ -85,9 +97,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. By making the S3 bucket public.
 - C. By creating an Origin Access Identity (OAI) and modifying the S3 bucket policy to grant it access.
 - D. By using a VPC Endpoint for S3.
-- View Answer
-  Answer: C
-  Explanation: This describes the standard secure pattern for serving S3 content. An Origin Access Identity (OAI) is a special CloudFront principal. You create an OAI and then create a bucket policy that grants s3:GetObject permission specifically to that OAI. This allows you to keep your S3 bucket completely private from the public while allowing CloudFront to fetch and serve the content.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** This describes the standard secure pattern for serving S3 content. An Origin Access Identity (OAI) is a special CloudFront principal. You create an OAI and then create a bucket policy that grants s3:GetObject permission specifically to that OAI. This allows you to keep your S3 bucket completely private from the public while allowing CloudFront to fetch and serve the content.
+
+</details>
 
 ---
 
@@ -97,9 +115,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. A Cache Miss
 - C. A Cache Invalidation
 - D. An Origin Fetch
-- View Answer
-  Answer: B
-  Explanation: A Cache Miss occurs when the requested content is not found in the cache of the Edge Location that receives the request. This triggers CloudFront to forward the request to the origin server to fetch the content.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** A Cache Miss occurs when the requested content is not found in the cache of the Edge Location that receives the request. This triggers CloudFront to forward the request to the origin server to fetch the content.
+
+</details>
 
 ---
 
@@ -109,9 +133,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. Based on the Time to Live (TTL) value, which is often set by `Cache-Control` headers from the origin.
 - C. All objects are cached for exactly 24 hours by default.
 - D. Based on the number of times the object has been requested.
-- View Answer
-  Answer: B
-  Explanation: The duration an object is cached is controlled by its Time to Live (TTL). This value can be set in the CloudFront distribution's cache behavior settings, or more commonly, it is controlled by caching headers like Cache-Control: max-age=<seconds> or Expires that are sent by the origin server along with the object.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** The duration an object is cached is controlled by its Time to Live (TTL). This value can be set in the CloudFront distribution's cache behavior settings, or more commonly, it is controlled by caching headers like Cache-Control: max-age=<seconds> or Expires that are sent by the origin server along with the object.
+
+</details>
 
 ---
 
@@ -121,9 +151,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. Create a new CloudFront distribution.
 - C. Perform an Invalidation for the file path (`/images/logo.png`).
 - D. Disable and then re-enable caching on the distribution.
-- View Answer
-  Answer: C
-  Explanation: A CloudFront Invalidation is the correct mechanism for force-expiring content from the cache. By creating an invalidation for /images/logo.png, you tell CloudFront to evict that object from all edge caches worldwide. The next time a user requests it, CloudFront will be forced to go back to the origin to fetch the newly updated version.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** A CloudFront Invalidation is the correct mechanism for force-expiring content from the cache. By creating an invalidation for /images/logo.png, you tell CloudFront to evict that object from all edge caches worldwide. The next time a user requests it, CloudFront will be forced to go back to the origin to fetch the newly updated version.
+
+</details>
 
 ---
 
@@ -133,9 +169,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. Geo-restriction (Geoblocking).
 - C. Signed URLs.
 - D. A custom Lambda@Edge function.
-- View Answer
-  Answer: B
-  Explanation: CloudFront has a built-in Geo-restriction feature. You can configure your distribution with either a "whitelist" (allow only specified countries) or a "blacklist" (block specified countries) to control content access based on the user's geographic location.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** CloudFront has a built-in Geo-restriction feature. You can configure your distribution with either a "whitelist" (allow only specified countries) or a "blacklist" (block specified countries) to control content access based on the user's geographic location.
+
+</details>
 
 ---
 
@@ -146,9 +188,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - C. An Application Load Balancer.
 - D. An Amazon EFS file system.
 - E. An EBS Snapshot.
-- View Answer
-  Answers: A and C
-  Explanation: A CloudFront origin must be an HTTP endpoint. The most common origins are Amazon S3 buckets (for static content) and HTTP servers, which can be EC2 instances or, more commonly, an Application Load Balancer that sits in front of a fleet of EC2 instances.
+
+<details>
+<summary>View Answer</summary>
+
+**Answers: A and C**
+
+**Explanation:** A CloudFront origin must be an HTTP endpoint. The most common origins are Amazon S3 buckets (for static content) and HTTP servers, which can be EC2 instances or, more commonly, an Application Load Balancer that sits in front of a fleet of EC2 instances.
+
+</details>
 
 ---
 
@@ -158,9 +206,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. It provides a static IP address for the API endpoint.
 - C. It terminates the TCP and TLS connection at an edge location close to the user, reducing round-trip time and latency.
 - D. It caches all POST requests by default.
-- View Answer
-  Answer: C
-  Explanation: For dynamic content like APIs, CloudFront improves performance by optimizing the network path. It establishes a persistent, optimized connection from the edge location back to your origin. A user's request only has to travel the "bad" public internet to the nearest edge location. This termination of the connection close to the user significantly reduces latency for dynamic requests.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** For dynamic content like APIs, CloudFront improves performance by optimizing the network path. It establishes a persistent, optimized connection from the edge location back to your origin. A user's request only has to travel the "bad" public internet to the nearest edge location. This termination of the connection close to the user significantly reduces latency for dynamic requests.
+
+</details>
 
 ---
 
@@ -170,9 +224,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. It tells the CloudFront edge location to cache the object for 3600 seconds.
 - C. Both A and B. CloudFront and the browser will both respect this header.
 - D. It invalidates the object from the cache after 3600 seconds.
-- View Answer
-  Answer: C
-  Explanation: The Cache-Control header is a standard HTTP header that provides caching instructions to all caches in the request chain. This includes intermediate caches like CloudFront and the end-user's browser cache. Both will honor the max-age directive.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** The Cache-Control header is a standard HTTP header that provides caching instructions to all caches in the request chain. This includes intermediate caches like CloudFront and the end-user's browser cache. Both will honor the max-age directive.
+
+</details>
 
 ---
 
@@ -182,9 +242,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. Amazon Route 53
 - C. Amazon CloudFront
 - D. Elastic Load Balancer
-- View Answer
-  Answer: C
-  Explanation: Amazon CloudFront is AWS's global CDN service. Its purpose is to cache and deliver content from a network of edge locations to provide lower latency to end-users.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** Amazon CloudFront is AWS's global CDN service. Its purpose is to cache and deliver content from a network of edge locations to provide lower latency to end-users.
+
+</details>
 
 ---
 
@@ -194,9 +260,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. A globally unique domain name (e.g., `d12345.cloudfront.net`).
 - C. A pair of access keys.
 - D. An IAM role ARN.
-- View Answer
-  Answer: B
-  Explanation: Each CloudFront distribution is assigned its own unique domain name. You then typically create a CNAME or Alias record in your own DNS to point your friendly domain (e.g., www.example.com) to this CloudFront domain name.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** Each CloudFront distribution is assigned its own unique domain name. You then typically create a CNAME or Alias record in your own DNS to point your friendly domain (e.g., www.example.com) to this CloudFront domain name.
+
+</details>
 
 ---
 
@@ -206,9 +278,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. A reduced data transfer fee.
 - C. It is free of charge.
 - D. It is billed as CloudFront data transfer in.
-- View Answer
-  Answer: C
-  Explanation: To encourage the use of the CDN, data transfer from an AWS origin (like S3 or EC2) to CloudFront edge locations is free. You only pay for the data transfer from CloudFront out to the internet (your users).
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** To encourage the use of the CDN, data transfer from an AWS origin (like S3 or EC2) to CloudFront edge locations is free. You only pay for the data transfer from CloudFront out to the internet (your users).
+
+</details>
 
 ---
 
@@ -218,9 +296,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. Create an invalidation for the CSS file's path.
 - C. Tell the user to clear their browser cache.
 - D. Reduce the TTL for all objects in the distribution to 0.
-- View Answer
-  Answer: B
-  Explanation: While telling the user to clear their cache (C) might fix it for them, it doesn't fix it for anyone else. The correct, global solution is to create an invalidation for the specific file. This forces all CloudFront edge locations to discard their old cached copy, ensuring everyone gets the new version on their next request.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** While telling the user to clear their cache (C) might fix it for them, it doesn't fix it for anyone else. The correct, global solution is to create an invalidation for the specific file. This forces all CloudFront edge locations to discard their old cached copy, ensuring everyone gets the new version on their next request.
+
+</details>
 
 ---
 
@@ -230,9 +314,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. A CloudFront Edge Location.
 - C. The source of the content, such as an S3 bucket or an HTTP server.
 - D. The DNS provider for the domain name.
-- View Answer
-  Answer: C
-  Explanation: The Origin is where CloudFront goes to get the definitive, master copy of your files when they are not in the cache. This can be an S3 bucket, an ELB, an EC2 instance, or any other publicly accessible HTTP endpoint.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** The Origin is where CloudFront goes to get the definitive, master copy of your files when they are not in the cache. This can be an S3 bucket, an ELB, an EC2 instance, or any other publicly accessible HTTP endpoint.
+
+</details>
 
 ---
 
@@ -242,9 +332,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. To restrict access to your content to authenticated users or for a limited time.
 - C. To cache dynamic content more effectively.
 - D. To block users from certain countries.
-- View Answer
-  Answer: B
-  Explanation: Signed URLs and Signed Cookies are features used to control access to private content. Your application can generate a temporary, cryptographically signed URL that grants a user access to a specific file for a limited duration. This is the standard way to serve private or paid content (e.g., video streaming subscriptions, software downloads) via CloudFront.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** Signed URLs and Signed Cookies are features used to control access to private content. Your application can generate a temporary, cryptographically signed URL that grants a user access to a specific file for a limited duration. This is the standard way to serve private or paid content (e.g., video streaming subscriptions, software downloads) via CloudFront.
+
+</details>
 
 ---
 
@@ -254,9 +350,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. The percentage of total requests that are served directly from the CloudFront cache, without having to go to the origin.
 - C. The number of edge locations where an object is cached.
 - D. The TTL of an object in seconds.
-- View Answer
-  Answer: B
-  Explanation: The Cache Hit Ratio is a key performance metric for a CDN. A high cache hit ratio (e.g., 95%) means that 95% of requests are being served quickly from the edge, which indicates a healthy and effective caching strategy. A low ratio indicates that CloudFront is frequently having to go back to the origin, which reduces performance.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B**
+
+**Explanation:** The Cache Hit Ratio is a key performance metric for a CDN. A high cache hit ratio (e.g., 95%) means that 95% of requests are being served quickly from the edge, which indicates a healthy and effective caching strategy. A low ratio indicates that CloudFront is frequently having to go back to the origin, which reduces performance.
+
+</details>
 
 ---
 
@@ -266,9 +368,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. From the security group of the EC2 instances.
 - C. From the IP address ranges of the CloudFront edge locations.
 - D. From the IP address of your office.
-- View Answer
-  Answer: C
-  Explanation: If you want to lock down your origin so that it only accepts traffic from CloudFront, you must configure its security group to allow inbound traffic only from the published IP address ranges of the CloudFront edge servers. This prevents users from bypassing CloudFront and accessing your ALB directly.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** If you want to lock down your origin so that it only accepts traffic from CloudFront, you must configure its security group to allow inbound traffic only from the published IP address ranges of the CloudFront edge servers. This prevents users from bypassing CloudFront and accessing your ALB directly.
+
+</details>
 
 ---
 
@@ -278,9 +386,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. It caches all API requests for the default TTL.
 - C. It forwards the requests to the origin over an optimized network path and can be configured to not cache the responses.
 - D. It converts all dynamic requests to static content.
-- View Answer
-  Answer: C
-  Explanation: CloudFront is highly effective for dynamic content. While you would typically configure it to not cache the responses (by setting TTL to 0 or respecting Cache-Control: no-cache headers), you still get a significant performance benefit. CloudFront terminates the user's connection at the edge and forwards the request to your origin over the fast and reliable AWS backbone network, reducing latency.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** CloudFront is highly effective for dynamic content. While you would typically configure it to not cache the responses (by setting TTL to 0 or respecting Cache-Control: no-cache headers), you still get a significant performance benefit. CloudFront terminates the user's connection at the edge and forwards the request to your origin over the fast and reliable AWS backbone network, reducing latency.
+
+</details>
 
 ---
 
@@ -290,9 +404,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. A setting that defines how CloudFront responds to a DDoS attack.
 - C. A set of rules in a distribution that applies to requests matching a specific path pattern.
 - D. A log of all user activity.
-- View Answer
-  Answer: C
-  Explanation: A cache behavior allows you to customize how CloudFront handles requests based on the request path. For example, you can create a behavior for /images/_ with a long TTL and another behavior for /api/_ with a TTL of 0. This allows you to apply different caching, origin, and security settings for different parts of your site within a single distribution.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** A cache behavior allows you to customize how CloudFront handles requests based on the request path. For example, you can create a behavior for /images/_ with a long TTL and another behavior for /api/_ with a TTL of 0. This allows you to apply different caching, origin, and security settings for different parts of your site within a single distribution.
+
+</details>
 
 ---
 
@@ -302,9 +422,15 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. The request succeeds, but a warning is logged in CloudTrail.
 - C. The request fails with a 403 Forbidden error because CloudFront can no longer access the origin object.
 - D. The request is redirected to the S3 console.
-- View Answer
-  Answer: C
-  Explanation: If the S3 bucket is private and you are not using an Origin Access Identity (OAI), then CloudFront is effectively an anonymous public user. Since the bucket policy denies public access, CloudFront's request to the origin will be denied, and it will pass that 403 Forbidden error back to the end-user.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** If the S3 bucket is private and you are not using an Origin Access Identity (OAI), then CloudFront is effectively an anonymous public user. Since the bucket policy denies public access, CloudFront's request to the origin will be denied, and it will pass that 403 Forbidden error back to the end-user.
+
+</details>
 
 ---
 
@@ -314,6 +440,12 @@ Caching is the core concept of a CDN. CloudFront stores a copy of your content a
 - B. `Cache-Duration: 3600`
 - C. `Cache-Control: max-age=3600`
 - D. `Expires-In: 3600`
-- View Answer
-  Answer: C
-  Explanation: The standard HTTP header for specifying cache duration is Cache-Control. The max-age directive tells all caches (including CloudFront and browsers) the maximum time in seconds that they are allowed to serve a cached copy before re-validating with the origin.
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C**
+
+**Explanation:** The standard HTTP header for specifying cache duration is Cache-Control. The max-age directive tells all caches (including CloudFront and browsers) the maximum time in seconds that they are allowed to serve a cached copy before re-validating with the origin.
+
+</details>
