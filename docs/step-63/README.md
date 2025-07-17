@@ -276,11 +276,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Amazon CloudWatch
 - C. AWS Trusted Advisor
 - D. Amazon GuardDuty
-- View Answer
-    
-    Answer: D
-    
-    Explanation: Port scanning is a type of reconnaissance activity that indicates potentially malicious behavior. Amazon GuardDuty is designed to detect such threats by analyzing VPC Flow Logs and identifying patterns that are indicative of a port scan.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: D**
+
+**Explanation:** Port scanning is a type of reconnaissance activity that indicates potentially malicious behavior. Amazon GuardDuty is designed to detect such threats by analyzing VPC Flow Logs and identifying patterns that are indicative of a port scan.
+</details>
     
 
 ---
@@ -291,11 +294,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Inspector automated patching.
 - C. AWS Config Rules with remediation actions.
 - D. CloudTrail automated rollbacks.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: AWS Config has a remediation feature. You can associate a Config Rule with a remediation action, which is typically an AWS Systems Manager (SSM) Automation document. When the rule detects a non-compliant resource, it can automatically trigger the SSM document to fix the configuration.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** AWS Config has a remediation feature. You can associate a Config Rule with a remediation action, which is typically an AWS Systems Manager (SSM) Automation document. When the rule detects a non-compliant resource, it can automatically trigger the SSM document to fix the configuration.
+</details>
     
 
 ---
@@ -306,11 +312,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Amazon Inspector
 - C. Amazon GuardDuty
 - D. All of the above.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: While all three services are relatively easy to enable, Amazon GuardDuty is the one that provides the most value with the least configuration. You enable it, and it immediately starts analyzing multiple data sources in the background to detect threats. Config (A) requires you to set up rules, and Inspector (B) requires the SSM agent to be running.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** While all three services are relatively easy to enable, Amazon GuardDuty is the one that provides the most value with the least configuration. You enable it, and it immediately starts analyzing multiple data sources in the background to detect threats. Config (A) requires you to set up rules, and Inspector (B) requires the SSM agent to be running.
+</details>
     
 
 ---
@@ -321,11 +330,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Amazon GuardDuty
 - C. Amazon Inspector
 - D. AWS IAM Access Analyzer
-- View Answer
-    
-    Answer: C
-    
-    Explanation: Amazon Inspector performs two types of scans: software vulnerability scans and network reachability analysis. The network reachability scan will identify any instances that have open ports accessible from the internet and flag them as unintended network exposure.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** Amazon Inspector performs two types of scans: software vulnerability scans and network reachability analysis. The network reachability scan will identify any instances that have open ports accessible from the internet and flag them as unintended network exposure.
+</details>
     
 
 ---
@@ -337,11 +349,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - C. AWS CloudTrail Logs
 - D. Application logs from EC2 instances
 - E. Amazon Inspector findings
-- View Answer
-    
-    Answers: B and C
-    
-    Explanation: GuardDuty's intelligence is fueled by analyzing several high-volume data sources. The primary ones you need to know are VPC Flow Logs, AWS CloudTrail events, and DNS logs. It analyzes these sources automatically without you needing to manage them.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B and C**
+
+**Explanation:** GuardDuty's intelligence is fueled by analyzing several high-volume data sources. The primary ones you need to know are VPC Flow Logs, AWS CloudTrail events, and DNS logs. It analyzes these sources automatically without you needing to manage them.
+</details>
     
 
 ---
@@ -352,11 +367,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Amazon Inspector
 - C. AWS Cost Explorer
 - D. Amazon GuardDuty
-- View Answer
-    
-    Answer: D
-    
-    Explanation: Amazon GuardDuty has specific threat detection models for identifying patterns associated with cryptocurrency mining. It can detect if an EC2 instance is communicating with known crypto-mining domains or IP addresses.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: D**
+
+**Explanation:** Amazon GuardDuty has specific threat detection models for identifying patterns associated with cryptocurrency mining. It can detect if an EC2 instance is communicating with known crypto-mining domains or IP addresses.
+</details>
     
 
 ---
@@ -367,11 +385,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Amazon Macie
 - C. AWS Config
 - D. Amazon Inspector
-- View Answer
-    
-    Answer: C
-    
-    Explanation: This is a resource configuration policy. AWS Config is the service to use. You would enable the s3-bucket-server-side-encryption-enabled managed rule to continuously check all S3 buckets for this specific configuration setting.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** This is a resource configuration policy. AWS Config is the service to use. You would enable the s3-bucket-server-side-encryption-enabled managed rule to continuously check all S3 buckets for this specific configuration setting.
+</details>
     
 
 ---
@@ -382,11 +403,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Inspector finds vulnerabilities *within* your workloads (e.g., unpatched software), while GuardDuty detects active threats *against* your account and workloads (e.g., malware communication).
 - C. Inspector is free, while GuardDuty is a paid service.
 - D. Inspector analyzes CloudTrail logs, while GuardDuty analyzes VPC Flow Logs.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: This is the core distinction. Inspector is proactive vulnerability management (looking for potential weaknesses). GuardDuty is reactive threat detection (looking for active, malicious behavior).
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** This is the core distinction. Inspector is proactive vulnerability management (looking for potential weaknesses). GuardDuty is reactive threat detection (looking for active, malicious behavior).
+</details>
     
 
 ---
@@ -397,11 +421,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. AWS CloudTrail
 - C. AWS Config
 - D. Amazon Inspector
-- View Answer
-    
-    Answer: B
-    
-    Explanation: Changing an IAM policy is an API call (PutUserPolicy, CreatePolicyVersion, etc.). AWS CloudTrail records all these API calls. You can search the CloudTrail event history to find all IAM-related API calls and see who made them and when. While Config (C) also tracks this, CloudTrail is the direct log of the API action.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** Changing an IAM policy is an API call (PutUserPolicy, CreatePolicyVersion, etc.). AWS CloudTrail records all these API calls. You can search the CloudTrail event history to find all IAM-related API calls and see who made them and when. While Config (C) also tracks this, CloudTrail is the direct log of the API action.
+</details>
     
 
 ---
@@ -412,11 +439,14 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. AWS WAF
 - C. Amazon Inspector
 - D. AWS Shield
-- View Answer
-    
-    Answer: C
-    
-    Explanation: Amazon Inspector's primary function is to scan the software packages on your resources and compare them against a database of known Common Vulnerabilities and Exposures (CVEs).
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** Amazon Inspector's primary function is to scan the software packages on your resources and compare them against a database of known Common Vulnerabilities and Exposures (CVEs).
+</details>
     
 
 ---
@@ -427,8 +457,11 @@ Think of securing your AWS account like securing a house. AWS Config is the insp
 - B. Amazon Inspector
 - C. Amazon GuardDuty
 - D. VPC Flow Logs
-- View Answer
-    
-    Answer: B
-    
-    Explanation: Amazon Inspector identifies software vulnerabilities. The remediation for a software vulnerability is almost always to apply a patch to update the software to a secure version. Therefore, an Inspector finding directly leads to a patching action.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** Amazon Inspector identifies software vulnerabilities. The remediation for a software vulnerability is almost always to apply a patch to update the software to a secure version. Therefore, an Inspector finding directly leads to a patching action.
+</details>
