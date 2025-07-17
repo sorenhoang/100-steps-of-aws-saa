@@ -58,11 +58,14 @@ You have several options for creating the data plane that will run your containe
 - B. Amazon EKS.
 - C. AWS Fargate as a standalone service.
 - D. AWS Lambda with container images.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: Amazon EKS is the managed service specifically for running Kubernetes. It provides a standard, conformant Kubernetes control plane, allowing teams to use their existing Kubernetes skills and tools (like kubectl) directly with the service.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** Amazon EKS is the managed service specifically for running Kubernetes. It provides a standard, conformant Kubernetes control plane, allowing teams to use their existing Kubernetes skills and tools (like kubectl) directly with the service.
+</details>
     
 
 ---
@@ -73,11 +76,14 @@ You have several options for creating the data plane that will run your containe
 - B. The networking configuration between pods.
 - C. The availability and maintenance of the Kubernetes control plane.
 - D. The IAM roles assigned to the pods.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: The primary value of EKS is that AWS manages the complex and critical Kubernetes control plane. This includes the master nodes, the etcd database, and the Kubernetes API server, ensuring it is patched, secure, and highly available across multiple AZs. The customer is responsible for the worker nodes (A).
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** The primary value of EKS is that AWS manages the complex and critical Kubernetes control plane. This includes the master nodes, the etcd database, and the Kubernetes API server, ensuring it is patched, secure, and highly available across multiple AZs. The customer is responsible for the worker nodes (A).
+</details>
     
 
 ---
@@ -88,11 +94,14 @@ You have several options for creating the data plane that will run your containe
 - B. EKS Managed Node Groups.
 - C. AWS Fargate with EKS.
 - D. Spot Instances.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: AWS Fargate is the serverless compute engine for containers. When used with EKS, it allows you to run your pods without provisioning or managing any worker nodes. AWS automatically provides the underlying compute for each pod, abstracting away all server management.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** AWS Fargate is the serverless compute engine for containers. When used with EKS, it allows you to run your pods without provisioning or managing any worker nodes. AWS automatically provides the underlying compute for each pod, abstracting away all server management.
+</details>
     
 
 ---
@@ -103,11 +112,14 @@ You have several options for creating the data plane that will run your containe
 - B. The set of master nodes and software (API server, scheduler, etc.) that manage the state of the cluster.
 - C. The VPC and subnets where the cluster is deployed.
 - D. The IAM roles and policies that grant permissions to the cluster.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: The control plane is the "brain" of the Kubernetes cluster. It's responsible for making global decisions about the cluster (like scheduling pods), as well as detecting and responding to cluster events. AWS manages this component for you in EKS.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** The control plane is the "brain" of the Kubernetes cluster. It's responsible for making global decisions about the cluster (like scheduling pods), as well as detecting and responding to cluster events. AWS manages this component for you in EKS.
+</details>
     
 
 ---
@@ -118,11 +130,14 @@ You have several options for creating the data plane that will run your containe
 - B. By using AWS Fargate with a GPU profile.
 - C. By creating a new Managed Node Group and specifying a GPU-equipped instance type (e.g., a P3 or G4 instance).
 - D. By configuring the EKS control plane to use GPUs.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: Managed Node Groups give you the flexibility to choose specific EC2 instance types. To run a GPU workload, you would create a node group specifically for this purpose and select an appropriate GPU-optimized instance type from the available EC2 families.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** Managed Node Groups give you the flexibility to choose specific EC2 instance types. To run a GPU workload, you would create a node group specifically for this purpose and select an appropriate GPU-optimized instance type from the available EC2 families.
+</details>
     
 
 ---
@@ -133,11 +148,14 @@ You have several options for creating the data plane that will run your containe
 - B. A Node
 - C. A Pod
 - D. A Service
-- View Answer
-    
-    Answer: C
-    
-    Explanation: A Pod is the most basic building block in Kubernetes. It represents a single instance of an application and holds one or more tightly coupled containers that share resources like networking and storage.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** A Pod is the most basic building block in Kubernetes. It represents a single instance of an application and holds one or more tightly coupled containers that share resources like networking and storage.
+</details>
     
 
 ---
@@ -148,11 +166,14 @@ You have several options for creating the data plane that will run your containe
 - B. EKS provides a standard Kubernetes experience with more community support and portability, while ECS is an AWS-opinionated solution that is simpler to use.
 - C. EKS is always cheaper than ECS.
 - D. ECS can only run on EC2, while EKS can only run on Fargate.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: This is the core trade-off. EKS offers adherence to the open-source Kubernetes standard, which means greater portability and access to a vast ecosystem of community tools. ECS is an AWS-native solution that is often simpler and more tightly integrated with other AWS services, but it is not based on Kubernetes.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** This is the core trade-off. EKS offers adherence to the open-source Kubernetes standard, which means greater portability and access to a vast ecosystem of community tools. ECS is an AWS-native solution that is often simpler and more tightly integrated with other AWS services, but it is not based on Kubernetes.
+</details>
     
 
 ---
@@ -163,11 +184,14 @@ You have several options for creating the data plane that will run your containe
 - B. It is the agent that communicates with the control plane's API server to ensure containers described in PodSpecs are running and healthy.
 - C. It provides the container runtime, such as Docker.
 - D. It routes network traffic between pods.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: The kubelet is the primary agent on each node. It receives instructions from the Kubernetes control plane and is responsible for starting, stopping, and maintaining the lifecycle of the pods and containers assigned to its node.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** The kubelet is the primary agent on each node. It receives instructions from the Kubernetes control plane and is responsible for starting, stopping, and maintaining the lifecycle of the pods and containers assigned to its node.
+</details>
     
 
 ---
@@ -178,11 +202,14 @@ You have several options for creating the data plane that will run your containe
 - B. By using IAM Roles for Service Accounts (IRSA).
 - C. By attaching an IAM role directly to the EKS cluster.
 - D. All pods run with administrator privileges by default.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: The secure and recommended method is IAM Roles for Service Accounts (IRSA). This feature allows you to associate an IAM role with a Kubernetes service account. You then configure your pods to use that service account, which allows them to automatically receive temporary, secure credentials from the associated IAM role to make calls to other AWS services.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** The secure and recommended method is IAM Roles for Service Accounts (IRSA). This feature allows you to associate an IAM role with a Kubernetes service account. You then configure your pods to use that service account, which allows them to automatically receive temporary, secure credentials from the associated IAM role to make calls to other AWS services.
+</details>
     
 
 ---
@@ -193,11 +220,14 @@ You have several options for creating the data plane that will run your containe
 - B. A flat monthly fee per cluster.
 - C. For the amount of vCPU and memory resources consumed by your pods, calculated from the time the pod's image is pulled until the pod terminates.
 - D. Based on the number of pods running, regardless of their size.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: Similar to ECS with Fargate, the pricing model is serverless. You pay for the vCPU and memory resources that your pods request, for the duration they are running. This removes the need to pay for entire EC2 instances that may be underutilized.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** Similar to ECS with Fargate, the pricing model is serverless. You pay for the vCPU and memory resources that your pods request, for the duration they are running. This removes the need to pay for entire EC2 instances that may be underutilized.
+</details>
     
 
 ---
@@ -208,11 +238,14 @@ You have several options for creating the data plane that will run your containe
 - B. An Auto Scaling Group of EC2 instances that is automatically provisioned and managed by EKS for running worker nodes.
 - C. The EKS control plane.
 - D. A group of pods that are managed by a single deployment.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: A Managed Node Group automates the provisioning and lifecycle management of EC2 worker nodes for an EKS cluster. It simplifies tasks like upgrading Kubernetes versions on the nodes and gracefully draining pods during termination.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** A Managed Node Group automates the provisioning and lifecycle management of EC2 worker nodes for an EKS cluster. It simplifies tasks like upgrading Kubernetes versions on the nodes and gracefully draining pods during termination.
+</details>
     
 
 ---
@@ -223,11 +256,14 @@ You have several options for creating the data plane that will run your containe
 - B. To provide a stable endpoint (a single IP address and DNS name) to access a logical set of pods.
 - C. To run a one-time batch job.
 - D. To define the container image and resource requests for a pod.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: Pods are ephemeral; they can be created and destroyed, and their IP addresses change. A Kubernetes Service provides a stable abstraction layer. It creates a single, persistent endpoint and automatically routes traffic to the healthy pods that match its selector, acting as an internal load balancer.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** Pods are ephemeral; they can be created and destroyed, and their IP addresses change. A Kubernetes Service provides a stable abstraction layer. It creates a single, persistent endpoint and automatically routes traffic to the healthy pods that match its selector, acting as an internal load balancer.
+</details>
     
 
 ---
@@ -238,11 +274,14 @@ You have several options for creating the data plane that will run your containe
 - B. Ensuring the high availability of the Kubernetes API server.
 - C. Deciding when to upgrade the Kubernetes version of the worker nodes.
 - D. Replacing failed master nodes.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: While EKS automates the process of upgrading worker nodes in a managed node group, the customer is responsible for initiating that upgrade. AWS manages the control plane (A, B, D).
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** While EKS automates the process of upgrading worker nodes in a managed node group, the customer is responsible for initiating that upgrade. AWS manages the control plane (A, B, D).
+</details>
     
 
 ---
@@ -253,11 +292,14 @@ You have several options for creating the data plane that will run your containe
 - B. When they need to use a custom AMI for their worker nodes that is not the EKS-optimized AMI.
 - C. When they want to use Fargate.
 - D. When they want AWS to handle all OS patching automatically.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: The primary reason to use self-managed nodes is to have maximum control and customization. If you have a specific compliance or security requirement that necessitates a custom-built operating system image, you would need to use self-managed nodes, as managed node groups require the use of the EKS-optimized AMI.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** The primary reason to use self-managed nodes is to have maximum control and customization. If you have a specific compliance or security requirement that necessitates a custom-built operating system image, you would need to use self-managed nodes, as managed node groups require the use of the EKS-optimized AMI.
+</details>
     
 
 ---
@@ -268,11 +310,14 @@ You have several options for creating the data plane that will run your containe
 - B. The etcd database
 - C. The kubelet
 - D. The Scheduler
-- View Answer
-    
-    Answer: D
-    
-    Explanation: The Kubernetes Scheduler is the component that makes placement decisions. It watches for pods that don't have a node assigned and, based on resource requirements, affinity rules, and other constraints, chooses the best available node to run that pod on.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: D**
+
+**Explanation:** The Kubernetes Scheduler is the component that makes placement decisions. It watches for pods that don't have a node assigned and, based on resource requirements, affinity rules, and other constraints, chooses the best available node to run that pod on.
+</details>
     
 
 ---
@@ -283,11 +328,14 @@ You have several options for creating the data plane that will run your containe
 - B. By running the control plane infrastructure across multiple Availability Zones.
 - C. By creating a daily snapshot of the control plane.
 - D. By using a single, large EC2 instance for the master node.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: A key benefit of EKS is that AWS automatically runs the control plane components (API server, etcd) across at least three Availability Zones. This ensures that the cluster's management plane is resilient to an outage in a single AZ.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** A key benefit of EKS is that AWS automatically runs the control plane components (API server, etcd) across at least three Availability Zones. This ensures that the cluster's management plane is resilient to an outage in a single AZ.
+</details>
     
 
 ---
@@ -298,11 +346,14 @@ You have several options for creating the data plane that will run your containe
 - B. To declare the desired state for a set of replica pods and manage their lifecycle, including updates and rollbacks.
 - C. To orchestrate a multi-step workflow.
 - D. To store container images.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: A Deployment is a higher-level object that manages a ReplicaSet. You tell the Deployment you want, for example, "3 replicas of my web server pod." The Deployment controller will then work to ensure that 3 healthy replicas are always running. It's the standard way to run stateless applications on Kubernetes.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** A Deployment is a higher-level object that manages a ReplicaSet. You tell the Deployment you want, for example, "3 replicas of my web server pod." The Deployment controller will then work to ensure that 3 healthy replicas are always running. It's the standard way to run stateless applications on Kubernetes.
+</details>
     
 
 ---
@@ -313,11 +364,14 @@ You have several options for creating the data plane that will run your containe
 - B. Amazon EKS with Fargate.
 - C. Amazon ECS with Fargate.
 - D. Self-managed Kubernetes on EC2.
-- View Answer
-    
-    Answer: C
-    
-    Explanation: While EKS is powerful, Kubernetes itself has a steep learning curve. Amazon ECS is an AWS-opinionated orchestrator that is generally considered simpler to learn and operate. Combining ECS with Fargate provides the absolute simplest, fully serverless experience for running containers on AWS, making it ideal for teams new to containers.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: C**
+
+**Explanation:** While EKS is powerful, Kubernetes itself has a steep learning curve. Amazon ECS is an AWS-opinionated orchestrator that is generally considered simpler to learn and operate. Combining ECS with Fargate provides the absolute simplest, fully serverless experience for running containers on AWS, making it ideal for teams new to containers.
+</details>
     
 
 ---
@@ -328,11 +382,14 @@ You have several options for creating the data plane that will run your containe
 - B. Each Fargate pod is given its own Elastic Network Interface (ENI) and runs in its own network isolation boundary.
 - C. All pods are exposed directly to the public internet.
 - D. Networking must be managed manually by the user.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: When you run a pod on Fargate, it gets its own dedicated ENI from the VPC subnet you specified. This provides strong network isolation at the pod level, as each pod has its own IP address and can have its own security group rules applied via the ENI.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** When you run a pod on Fargate, it gets its own dedicated ENI from the VPC subnet you specified. This provides strong network isolation at the pod level, as each pod has its own IP address and can have its own security group rules applied via the ENI.
+</details>
     
 
 ---
@@ -343,11 +400,14 @@ You have several options for creating the data plane that will run your containe
 - B. Hard-code the secret value into the container's environment variables in the pod spec.
 - C. Store the secret in the Docker container image.
 - D. Allow public access to the secret.
-- View Answer
-    
-    Answer: A
-    
-    Explanation: The best practice is to avoid exposing secrets directly as environment variables. The recommended approach is to use a provider like the AWS Secrets and Configuration Provider (for the CSI driver) or the Secrets Store CSI Driver. This allows you to mount secrets from Secrets Manager or SSM Parameter Store as files into the pod's filesystem, which is more secure than environment variables.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: A**
+
+**Explanation:** The best practice is to avoid exposing secrets directly as environment variables. The recommended approach is to use a provider like the AWS Secrets and Configuration Provider (for the CSI driver) or the Secrets Store CSI Driver. This allows you to mount secrets from Secrets Manager or SSM Parameter Store as files into the pod's filesystem, which is more secure than environment variables.
+</details>
     
 
 ---
@@ -358,11 +418,14 @@ You have several options for creating the data plane that will run your containe
 - B. It automates the provisioning and lifecycle management of worker nodes, including version upgrades and graceful termination.
 - C. It provides a serverless experience.
 - D. It is the only way to use Spot Instances.
-- View Answer
-    
-    Answer: B
-    
-    Explanation: Managed Node Groups significantly reduce the operational burden of running the data plane. EKS handles the creation of the Auto Scaling Group and provides simplified, often one-click, commands to perform complex tasks like upgrading the kubelet version across the entire fleet or safely draining nodes before termination.
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B**
+
+**Explanation:** Managed Node Groups significantly reduce the operational burden of running the data plane. EKS handles the creation of the Auto Scaling Group and provides simplified, often one-click, commands to perform complex tasks like upgrading the kubelet version across the entire fleet or safely draining nodes before termination.
+</details>
     
 
 ---
@@ -374,8 +437,11 @@ You have several options for creating the data plane that will run your containe
 - C. An hourly fee for the EKS control plane.
 - D. The `etcd` database instances.
 - E. The `kubectl` command-line tool.
-- View Answer
-    
-    Answers: B and C
-    
-    Explanation: The EKS pricing model has two main components: 1) A flat hourly fee for the managed control plane itself (C). 2) The cost of the data plane resources you consume, which is either the cost of the EC2 instances in your node groups or the vCPU/memory cost for your Fargate pods (B).
+<details>
+<summary>View Answer</summary>
+<br>
+
+**Answer: B and C**
+
+**Explanation:** The EKS pricing model has two main components: 1) A flat hourly fee for the managed control plane itself (C). 2) The cost of the data plane resources you consume, which is either the cost of the EC2 instances in your node groups or the vCPU/memory cost for your Fargate pods (B).
+</details>
