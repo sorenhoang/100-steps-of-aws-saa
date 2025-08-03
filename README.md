@@ -1,6 +1,55 @@
-# 100 Steps of AWS for SAA-C03
+# 📘 100 Steps of AWS SAA – Study Journey & Certification
 
-> Accelerate your AWS SAA-C03 learning through small, manageable steps.
+## 🎯 Goal
+To pass the **AWS Certified Solutions Architect – Associate (SAA-C03)** exam by following a structured, hands-on learning journey with 100 focused steps.
+
+---
+
+## 🧭 Study Roadmap
+
+| Phase   | Description                                 | Estimated Duration |
+| ------- | ------------------------------------------- | ------------------ |
+| Phase 1 | Learn the fundamentals of AWS core services | 3 weeks            |
+| Phase 2 | Complete the 100-step practical challenge   | 6 weeks            |
+| Phase 3 | Practice exams and final review             | 2 weeks            |
+| Phase 4 | Real exam and reflection                    | 1 week             |
+
+---
+
+## 🏆 Certification Result
+
+| Item          | Details                                       |
+| ------------- | --------------------------------------------- |
+| Certification | AWS Certified Solutions Architect – Associate |
+| Exam Code     | SAA-C03                                       |
+| Test Date     | `31/07/2025`                                  |
+| Test Center   | Pearson VUE                                   |
+| Score         | `860 / 1000`                                  |
+| Result        | ✅ Passed                                      |
+
+---
+
+## 🧠 Learning Reflections
+
+### 🔸 Resources Used
+- [✔️] [Stephane Maarek’s SAA-C03 Course (Udemy)](https://www.udemy.com/course/aws-certified-solutions-architect-associate/)
+- [✔️] Tutorials Dojo Practice Exams
+- [✔️] AWS Whitepapers (Well-Architected, Security, etc.)
+- [✔️] AWS Documentation + Free Tier for hands-on labs
+
+### 🔸 Study Tips
+- Break topics down into **small steps (1 per day if possible)**
+- Use **diagrams** and **visual mind maps** to connect services
+- Practice with **exam questions** early and often
+- Learn **design trade-offs**: cost, performance, reliability
+
+### 🔸 Exam Day Advice
+- Watch for keywords like: **"high availability", "cost-effective", "minimum effort"**
+- Understand real-world **architecture patterns**
+- Read every question carefully before choosing
+- Don’t memorize — **understand the “why”**
+
+---
 
 ## 📘 Table of Contents
 
